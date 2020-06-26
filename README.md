@@ -9,6 +9,10 @@ Aqui terá um CRUD básico e solido usando Node.js e react
 Criando migrate [npx knex migrate:make migration_name ]
 Rodando migrate [npx knex migrate:latest]
 // EXECUTAR (npx knex init) para EXECUTAR UM PACOTE É (npx), knex para criar um arquivo do bancco. 
+'d6347e16'
+*******PACOTES
+crypto para deixar aleatório.
+
 
 /**
  * METODOS HTTP:
