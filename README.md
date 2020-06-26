@@ -5,7 +5,9 @@ Aqui terá um CRUD básico e solido usando Node.js e react
 // NODEMON: Para subir serve sozinho ao salvar (Está em homologação somente)
 // KNEX JS: Para traduzir liguagem do banco em JS
 // SQLITE3: Banco a ser usado.
-
+// MIGRATIONS(Se cria usando knex) 
+Criando migrate [npx knex migrate:make migration_name ]
+Rodando migrate [npx knex migrate:latest]
 // EXECUTAR (npx knex init) para EXECUTAR UM PACOTE É (npx), knex para criar um arquivo do bancco. 
 
 /**
