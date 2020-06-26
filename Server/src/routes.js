@@ -1,34 +1,14 @@
 const express = require('express');
-const crypto = require('crypto');
+const UserController = require('./controllers/UserController');
+const AccountController = require('./controllers/AccountController');
 const connection = require('./database/connection');
-const { response } = require('express');
 const routes = express.Router();
 
+// Listar usuários
+routes.get('/users', UserController.index);
 
-routes.get('/users', async (request, response) => {
-	const users = await connection('users').select('*');
+routes.post('/users', UserController.create);
 
-	return response.json(users);
-
-});
-
-routes.post('/users', async(request, response) => {
-	const { login, password, name, email } = request.body;
-	const blocked = false;
-	const admin = false;
-	const id = crypto.randomBytes(4).toString('HEX');
-
-	await connection('users').insert({
-		id,
-		login,
-		password,
-		name,
-		email,
-		blocked,
-		admin,
-	})
-
-	return response.json({ id });
-});
+routes.post('/accounts', AccountController.create);
 
 module.exports = routes;
