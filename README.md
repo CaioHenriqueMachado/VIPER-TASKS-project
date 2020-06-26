@@ -1,6 +1,7 @@
 # CRUD-method
 Aqui terá um CRUD básico e solido usando Node.js e react
 // DEPENDENCIAS
+// CORS: (Segurança) Para dizer quem vai poder acessar seu sistema.
 // EXPRESS: microframework, serve para trazer as configurações básicas sobre rotas
 // NODEMON: Para subir serve sozinho ao salvar (Está em homologação somente)
 // KNEX JS: Para traduzir liguagem do banco em JS
