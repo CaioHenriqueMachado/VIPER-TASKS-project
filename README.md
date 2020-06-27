@@ -34,3 +34,5 @@ crypto para deixar aleatório.
 // RESPONSE: Responsavel por retornar uma respota para o usuário.
 
 // Query Builder: Escrever linhas de bancos na estrutura do node.
+
+Para instalar dependencias é só dar um NPM INSTALL
