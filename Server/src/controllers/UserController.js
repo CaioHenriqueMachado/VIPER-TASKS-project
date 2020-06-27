@@ -14,7 +14,7 @@ module.exports = {
 		const { login, password, name, email } = request.body;
 		const blocked = false;
 		const admin = true;
-		const id = crypto.randomBytes(4).toString('HEX');
+		const id = crypto.randomBytes(10).toString('HEX');
 	
 		await connection('users').insert({
 				id,

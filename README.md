@@ -36,3 +36,8 @@ crypto para deixar aleatório.
 // Query Builder: Escrever linhas de bancos na estrutura do node.
 
 Para instalar dependencias é só dar um NPM INSTALL
+
+Criando projetos:
+[npx create-react-app web]
+Executar:
+[npm start]
