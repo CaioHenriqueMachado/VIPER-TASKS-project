@@ -24,16 +24,43 @@ module.exports = {
 	return response.json({ id });
 	},
 
-	async delete(request, response) {
+	async update( request, response ) {
 		const { id } = request.params;
+		const {name, description, difficulty, concluded} = request.body;
 		const user_id = request.headers.authorization;
 
-		const account = await connection('tasks')
+		const task = await connection('tasks')
 		.where('id', id)
 		.select('user_id')
 		.first();
 
-		if( account.user_id != user_id){
+		if( task.user_id != user_id){
+			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
+		}
+
+		await connection('tasks').where('id', id).update({
+			'name': name,
+			'description': description,
+			'difficulty':difficulty,
+			'concluded':concluded
+
+
+		});
+
+		return response.status(200).send();
+
+	},
+
+	async delete(request, response) {
+		const { id } = request.params;
+		const user_id = request.headers.authorization;
+
+		const task = await connection('tasks')
+		.where('id', id)
+		.select('user_id')
+		.first();
+
+		if( task.user_id != user_id){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
 		}
 	
