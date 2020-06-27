@@ -41,3 +41,5 @@ Criando projetos:
 [npx create-react-app web]
 Executar:
 [npm start]
+DEPENDENCIAS React
+[npm install react-icons]
