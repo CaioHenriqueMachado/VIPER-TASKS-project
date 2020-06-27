@@ -5,10 +5,10 @@ module.exports = {
 	async index(request, response) {
         const user_id = request.headers.authorization;
 
-        const accounts = await connection('accounts')
+        const tasks = await connection('tasks')
             .where('user_id',user_id)
             .select('*');
 
-        return response.json(accounts);
+        return response.json(tasks);
     }
 }

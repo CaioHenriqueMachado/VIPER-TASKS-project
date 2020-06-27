@@ -3,19 +3,21 @@ const connection = require('../database/connection');
 
 module.exports = {
 	async index(request, response) {
-		const accounts = await connection('accounts').select('*');
+		const tasks = await connection('tasks').select('*');
 	
-		return response.json(accounts);
+		return response.json(tasks);
 	},
 
 	async create( request, response ) {
-		const {name, account, session} = request.body;
+		const {name, description, difficulty} = request.body;
 		const user_id = request.headers.authorization;
+		const concluded = false;
 
-		const [id] = await connection('accounts').insert({
+		const [id] = await connection('tasks').insert({
 			name,
-			account,
-			session,
+			description,
+			difficulty,
+			concluded,
 			user_id,
 		});
 
@@ -26,7 +28,7 @@ module.exports = {
 		const { id } = request.params;
 		const user_id = request.headers.authorization;
 
-		const account = await connection('accounts')
+		const account = await connection('tasks')
 		.where('id', id)
 		.select('user_id')
 		.first();
@@ -35,7 +37,7 @@ module.exports = {
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
 		}
 	
-		await connection('accounts').where('id', id).delete();
+		await connection('tasks').where('id', id).delete();
 
 		return response.status(204).send();
 	},

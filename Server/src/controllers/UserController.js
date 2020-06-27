@@ -3,6 +3,7 @@ const crypto = require('crypto');
 
 
 module.exports = {
+	// Só vai ser usado caso crie um admin
 	async index(request, response) {
 		const users = await connection('users').select('*');
 	

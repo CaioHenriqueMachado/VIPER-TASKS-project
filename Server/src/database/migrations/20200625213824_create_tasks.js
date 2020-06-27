@@ -1,10 +1,11 @@
 
 exports.up = function(knex) {
-	return knex.schema.createTable('accounts', function (table) {
+	return knex.schema.createTable('tasks', function (table) {
 		table.increments();
 		table.string('name').notNullable();
-		table.string('account').notNullable();
-		table.string('session').notNullable();
+		table.string('description').notNullable();
+		table.string('difficulty').notNullable();
+		table.boolean('concluded').notNullable();
 
 		table.string('user_id').notNullable();
 
@@ -13,6 +14,6 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-	return knex.schema.dropTable('accounts');
+	return knex.schema.dropTable('tasks');
 
 };
