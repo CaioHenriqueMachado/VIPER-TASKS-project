@@ -43,3 +43,4 @@ Executar:
 [npm start]
 DEPENDENCIAS React
 [npm install react-icons]
+[npm install react-router-dom] - Responsavel pelas rotas no react
