@@ -27,5 +27,28 @@ module.exports = {
 		})
 	
 	return response.json({ id });
-	}
+	},
+
+	async update( request, response ) {
+		const  id  = request.headers.authorization;
+		const { name, email } = request.body;
+
+
+		const user = await connection('users')
+		.where('id', id)
+		.first();
+
+		if( user.id != id){
+			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
+		}
+
+		await connection('users').where('id', id).update({
+			'name': name,
+			'email': email,
+
+		});
+
+		return response.status(200).send();
+
+	},
 }
