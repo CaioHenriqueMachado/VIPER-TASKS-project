@@ -10,7 +10,7 @@ import api from '../../services/api';
 export default function NewTask() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [difficulty, setDifficulty] = useState('');
+	const [difficulty, setDifficulty] = useState('');
 
 		const history = useHistory();
 
@@ -37,9 +37,7 @@ export default function NewTask() {
 			} catch(err){
 					alert ('Erro no cadastro, tente novamente')
 			}
-		
-
-		
+				
 }
     return (
         <div className="new-incident-container">
