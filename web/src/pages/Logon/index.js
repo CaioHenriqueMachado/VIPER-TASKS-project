@@ -13,7 +13,7 @@ export default function Logon() {
             <section className="form">
                 <form>
                     <h1>Faça seu Login</h1>
-                    <input placeholder="Login" autofocus="autofocus"/>
+                    <input placeholder="Login"/>
                     <input placeholder="Password" />
                     <button className="button" type="submit">Entrar</button>
                     <Link to="/register" className="back-link">

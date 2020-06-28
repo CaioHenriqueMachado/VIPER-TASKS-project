@@ -8,11 +8,6 @@
     align-items: center; /*Alinha verticalmente*/
 }
 
-.logon-container img.logo {
-    width: 150px;
-    margin: 50px;
-}
-
 .logon-container section.form {
     max-width: 350px;
     text-align: center;
