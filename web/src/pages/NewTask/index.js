@@ -1,12 +1,46 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Linkm, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
-
 import logoImg from '../../assests/logo1.svg';
 
+import api from '../../services/api';
+
 export default function NewTask() {
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [difficulty, setDifficulty] = useState('');
+
+		const history = useHistory();
+
+		const userId = localStorage.getItem('userId');
+
+		async function handleNewTask(e){
+			e.preventDefault();
+
+			const data = {
+				name,
+				description,
+				difficulty
+			};
+
+			try {
+					await api.post('tasks', data, {
+						headers: {
+							Authorization: userId
+						}
+					});
+					
+					alert ('Cadastro realizado com sucesso');
+					history.push('/profile');
+			} catch(err){
+					alert ('Erro no cadastro, tente novamente')
+			}
+		
+
+		
+}
     return (
         <div className="new-incident-container">
         <div className="content">
@@ -22,17 +56,20 @@ export default function NewTask() {
                 </Link>
 
             </section>
-            <form>
-                <input placeholder="Título da tarefa"
-
+            <form onSubmit={handleNewTask}>
+								<input placeholder="Título da tarefa"
+									value={name}
+									onChange={ e => setName(e.target.value) }
                 />
 
                 <textarea placeholder="Descrição"
-     
+									value={description}
+									onChange={ e => setDescription(e.target.value) }
                 />
 
                 <input placeholder="Nível de dificuldade" 
- 
+									value={difficulty}
+									onChange={ e => setDifficulty(e.target.value) }
                 />
                     
            
