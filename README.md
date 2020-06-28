@@ -44,3 +44,4 @@ Executar:
 DEPENDENCIAS React
 [npm install react-icons]
 [npm install react-router-dom] - Responsavel pelas rotas no react
+[npm install axios] - Client http (Vai ser responsavel por requisição e resposta no back end)
