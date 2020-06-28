@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiTrash2, FiPower } from 'react-icons/fi';
 
@@ -6,12 +6,29 @@ import './styles.css';
 
 import logoImg from '../../assests/logo1.svg';
 
+import api from '../../services/api';
+
 export default function Profile() {
+    const [ ] = useState([]);
+
+    const userId = localStorage.getItem('userId');
+    const userName = localStorage.getItem('userName');
+
+    useEffect(() => {
+        api.get('profile',{
+            headers: {
+                Authorization: userId,
+            }
+        }).then(Response => {
+
+        })
+    }, []);
+
     return (
         <div className="profile-container">
             <header>
                 <img src={logoImg} alt="Be The Hero" />
-                <span>Bem vindo, Caio</span>
+    <span>Bem vindo, {userName}</span>
 
                 <Link className="button" to="/tasks/new">
                     Cadastrar um novo caso
