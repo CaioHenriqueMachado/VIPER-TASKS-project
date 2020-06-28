@@ -11,13 +11,13 @@ export default function Profile() {
         <div className="profile-container">
             <header>
                 <img src={logoImg} alt="Be The Hero" />
-                <span>Bem vindo</span>
+                <span>Bem vindo, Caio</span>
 
-                <Link className="button" to="/incidents/new">
+                <Link className="button" to="/tasks/new">
                     Cadastrar um novo caso
                 </Link>
                 <button  type="button">
-                    <FiPower size={18} color="#e02021" />
+                    <FiPower size={24} color="#0609be" />
                 </button>
             </header>
 
@@ -41,7 +41,7 @@ export default function Profile() {
                     </li>
 
                     <li >
-                        <strong>CASO:</strong>
+                        <strong>TAREFA:</strong>
                         <p>aqui o resumo</p>
 
                         <strong>DESCRIÇÃO:</strong>
