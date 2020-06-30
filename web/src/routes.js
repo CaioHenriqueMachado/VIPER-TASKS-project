@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import NewTask from './pages/NewTask';
+import EditTask from './pages/EditTask';
 
 export default function Routes () {
 	return (
@@ -16,6 +17,7 @@ export default function Routes () {
 				<Route path="/profile" exact component={Profile} />
 				<Route path="/profile/edit" component={EditProfile} />
 				<Route path="/tasks/new" component={NewTask} />
+				<Route path="/tasks/edit" component={EditTask} />
 			</Switch>
 		</BrowserRouter>
 	);
