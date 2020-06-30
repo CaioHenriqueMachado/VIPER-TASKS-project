@@ -17,7 +17,7 @@ export default function Profile() {
 
     // Assim que entrar na tela ele deve puxar do backend os dados instantaneamente, para isso o useEffect.
     useEffect(() => {
-        api.get('profile',{
+        api.get('tasks',{
             headers: {
                 Authorization: userId,
             }

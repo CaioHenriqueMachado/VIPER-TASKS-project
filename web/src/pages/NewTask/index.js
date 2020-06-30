@@ -12,31 +12,31 @@ export default function NewTask() {
     const [description, setDescription] = useState('');
 	const [difficulty, setDifficulty] = useState('');
 
-		const history = useHistory();
+	const history = useHistory();
 
-		const userId = localStorage.getItem('userId');
+	const userId = localStorage.getItem('userId');
 
-		async function handleNewTask(e){
-			e.preventDefault();
+	async function handleNewTask(e){
+		e.preventDefault();
 
-			const data = {
-				name,
-				description,
-				difficulty
-			};
+		const data = {
+			name,
+			description,
+			difficulty
+		};
 
-			try {
-					await api.post('tasks', data, {
-						headers: {
-							Authorization: userId
-						}
-					});
-					
-					alert ('Cadastro realizado com sucesso');
-					history.push('/profile');
-			} catch(err){
-					alert ('Erro no cadastro, tente novamente')
-			}
+		try {
+				await api.post('tasks', data, {
+					headers: {
+						Authorization: userId
+					}
+				});
+				
+				alert ('Cadastro realizado com sucesso');
+				history.push('/profile');
+		} catch(err){
+				alert ('Erro no cadastro, tente novamente')
+		}
 				
 }
     return (

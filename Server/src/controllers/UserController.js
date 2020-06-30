@@ -31,7 +31,7 @@ module.exports = {
 
 	async update( request, response ) {
 		const  id  = request.headers.authorization;
-		const { name, email } = request.body;
+		const { name, email, login } = request.body;
 
 
 		const user = await connection('users')
@@ -45,7 +45,7 @@ module.exports = {
 		await connection('users').where('id', id).update({
 			'name': name,
 			'email': email,
-
+			'login': login
 		});
 
 		return response.status(200).send();

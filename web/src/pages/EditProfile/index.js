@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 
@@ -11,19 +11,60 @@ import api from '../../services/api';
 
 
 export default function EditProfile() {
-	const [name, setName] = useState('vxvc');
-	const [email, setEmail] = useState('vxvc');
-	const [login, setLogin] = useState('vxvc');
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [login, setLogin] = useState('');
 
+	const history = useHistory();
+
+	const userId = localStorage.getItem('userId');
+
+	useEffect(() => {
+        api.get('profile',{
+            headers: {
+                Authorization: userId,
+            }
+        }).then(response => {
+			setName(response.data.name)
+			setEmail(response.data.email)
+			setLogin(response.data.login)
+        })
+	}, [userId]);
 	
-	async function handleNewTask(e){
+
+
+
+	async function handleProfileEdit(e){
 		e.preventDefault();
+
+		const data = {
+			name,
+			email,
+			login
+		};
+
+		try {
+            await api.put(`users/${userId}`,data, {
+                headers: {
+                    Authorization: userId,
+                }
+			});
+			localStorage.setItem('userName', data.name);
+			alert ('Cadastro atualizado com sucesso');
+			
+				history.push('/profile');
+			
+		} catch(err){
+				alert ('Erro no cadastro, tente novamente')
+		}
 	}
+	
+
 	return(
 		<div className="logon-container">
 			<img src={logoImg} alt="logo" className="logo"/>
 			<section className="form">
-				<form onSubmit={handleNewTask}>
+				<form onSubmit={handleProfileEdit}>
 					<h1>Edite seu perfil</h1>
 					<h2>Nome</h2>
 					<input 

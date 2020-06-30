@@ -2,10 +2,15 @@ const connection = require('../database/connection');
 
 
 module.exports = {
+	// Para listar tasks do usuario
 	async index(request, response) {
-		const tasks = await connection('tasks').select('*');
-	
-		return response.json(tasks);
+        const user_id = request.headers.authorization;
+
+        const tasks = await connection('tasks')
+            .where('user_id',user_id)
+            .select('*');
+
+        return response.json(tasks);
 	},
 
 	async create( request, response ) {
