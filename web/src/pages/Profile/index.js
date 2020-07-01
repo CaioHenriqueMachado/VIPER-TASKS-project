@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiTrash2, FiPower } from 'react-icons/fi';
+import { FiTrash2, FiPower, FiEdit } from 'react-icons/fi';
 
+import EditTask from '../EditTask';
 import './styles.css';
 
 import logoImg from '../../assests/logo1.svg';
@@ -39,6 +40,10 @@ export default function Profile() {
         }
     }
 
+    async function handleIdTask(id) {
+        localStorage.setItem('taskId', id);
+    }
+
     function handleLogout() {
         localStorage.clear();
         history.push('/') ;
@@ -46,6 +51,7 @@ export default function Profile() {
 
 
     return (
+        <>
         <div className="profile-container">
             <header>
                 <img src={logoImg} alt="Be The Hero" />
@@ -72,13 +78,20 @@ export default function Profile() {
 
                       <strong>DIFICULDADE:</strong>
                       <p>{task.difficulty}</p>
+                    
+                      <button className="edit" onClick={() => handleIdTask(task.id)} type="button">
+                          <FiEdit size={20} color="#a8a8b3" />
+                      </button>
 
-                      <button onClick={() => handleDeleteTask(task.id)} type="button">
+                      <button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
                           <FiTrash2 size={20} color="#a8a8b3" />
                       </button>
                   </li>
                 ))}
             </ul>
         </div>
+        <EditTask/>
+        </>
+        
     );
-}
+} 

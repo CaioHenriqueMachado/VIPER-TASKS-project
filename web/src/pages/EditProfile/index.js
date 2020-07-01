@@ -93,6 +93,5 @@ export default function EditProfile() {
 				</form>
 			</section>
 		</div>
-	);
+	)
 }
-

@@ -10,7 +10,7 @@ import api from '../../services/api';
 
 
 
-export default function EditProfile() {
+export default function EditTask() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [login, setLogin] = useState('');
