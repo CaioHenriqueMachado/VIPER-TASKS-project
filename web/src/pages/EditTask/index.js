@@ -18,15 +18,18 @@ export default function EditTask() {
 	const history = useHistory();
 
 	const userId = localStorage.getItem('userId');
+	const taskId = localStorage.getItem('taskId');
 
+
+	// PAREI AQUI. CRIAR TASK QUE PUXA DOS DADOS DE 1 ID
 	useEffect(() => {
-        api.get('profile',{
+        api.get(`tasks`,{
             headers: {
                 Authorization: userId,
             }
         }).then(response => {
 			setName(response.data.name)
-			setEmail(response.data.email)
+			setEmail(response.data.des)
 			setLogin(response.data.login)
         })
 	}, [userId]);
@@ -61,39 +64,6 @@ export default function EditTask() {
 	
 
 	return(
-		<>
-		<div className="logon-container">
-			<img src={logoImg} alt="logo" className="logo"/>
-			<section className="form">
-				<form onSubmit={handleProfileEdit}>
-					<h1>Edite seu perfil</h1>
-					<h2>Nome</h2>
-					<input 
-						id="loco"
-						value={name}
-						onChange={ e => setName(e.target.value) }
-
-					/>
-					<h2>E-mail</h2>
-					<input 
-
-						value={email}
-						onChange={ e => setEmail(e.target.value) }
-					/>
-					<h2>Login</h2>
-					<input 
-
-						value={login}
-						onChange={ e => setLogin(e.target.value) }
-					/>
-					<button className="button" type="submit">Atualizar</button>
-					<Link to="/profile" className="back-link">
-						<FiLogIn size={16} color="#0609be"/>
-						Voltar para tarefas
-					</Link>
-				</form>
-			</section>
-		</div>
 		<div id="modal-edit" className="modal-container">
 			<div className="modal">
 				<button className="close" onClick={() => finishModal('modal-edit')}>
@@ -110,7 +80,6 @@ export default function EditTask() {
 				</form>
 			</div>
 		</div>
-	</>
 	);
 }
 
