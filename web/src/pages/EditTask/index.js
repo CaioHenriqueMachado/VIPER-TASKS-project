@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiX } from 'react-icons/fi';
 
 import './styles.css';
-
+import finishModal from './script';
 import logoImg from '../../assests/logo1.svg';
 
 import api from '../../services/api';
@@ -61,6 +61,7 @@ export default function EditTask() {
 	
 
 	return(
+		<>
 		<div className="logon-container">
 			<img src={logoImg} alt="logo" className="logo"/>
 			<section className="form">
@@ -93,6 +94,23 @@ export default function EditTask() {
 				</form>
 			</section>
 		</div>
+		<div id="modal-edit" className="modal-container">
+			<div className="modal">
+				<button className="close" onClick={() => finishModal('modal-edit')}>
+					<FiX size={40} color="black"/>
+				</button>
+				<form action="">
+					<h2>Nome:</h2>
+					<input type="text"/>
+					<h2>Descrição:</h2>
+					<input type="text"/>
+					<h2>Dificuldade:</h2>
+					<input type="text"/>
+					<button className="button" type="submit">Atualizar</button>
+				</form>
+			</div>
+		</div>
+	</>
 	);
 }
 

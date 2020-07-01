@@ -4,6 +4,7 @@ import { FiTrash2, FiPower, FiEdit } from 'react-icons/fi';
 
 import EditTask from '../EditTask';
 import './styles.css';
+import initialModal from './script';
 
 import logoImg from '../../assests/logo1.svg';
 
@@ -79,7 +80,7 @@ export default function Profile() {
                       <strong>DIFICULDADE:</strong>
                       <p>{task.difficulty}</p>
                     
-                      <button className="edit" onClick={() => handleIdTask(task.id)} type="button">
+                      <button className="edit" onClick={() => (handleIdTask(task.id), initialModal('modal-edit'))} type="button">
                           <FiEdit size={20} color="#a8a8b3" />
                       </button>
 
