@@ -12,6 +12,7 @@ routes.post('/users', UserController.create);
 routes.put('/users/:id', UserController.update);
 
 
+routes.get('/task/:id', TaskController.show);
 routes.get('/tasks', TaskController.index);
 routes.post('/tasks', TaskController.create);
 routes.put('/tasks/:id', TaskController.update);

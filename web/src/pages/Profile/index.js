@@ -45,6 +45,10 @@ export default function Profile() {
         localStorage.setItem('taskId', id);
     }
 
+    async function clearIdTask(id) {
+        localStorage.setItem('taskId').clear();
+    }
+
     function handleLogout() {
         localStorage.clear();
         history.push('/') ;
@@ -84,7 +88,7 @@ export default function Profile() {
                           <FiEdit size={20} color="#a8a8b3" />
                       </button>
 
-                      <button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
+                      <button className="delete" onClick={() => (handleDeleteTask(task.id),clearIdTask(task.id))} type="button">
                           <FiTrash2 size={20} color="#a8a8b3" />
                       </button>
                   </li>

@@ -11,9 +11,9 @@ import api from '../../services/api';
 
 
 export default function EditTask() {
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [login, setLogin] = useState('');
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+	const [difficulty, setDifficulty] = useState('');
 
 	const history = useHistory();
 
@@ -23,14 +23,14 @@ export default function EditTask() {
 
 	// PAREI AQUI. CRIAR TASK QUE PUXA DOS DADOS DE 1 ID
 	useEffect(() => {
-        api.get(`tasks`,{
+        api.get(`task/${taskId}`,{
             headers: {
                 Authorization: userId,
             }
         }).then(response => {
 			setName(response.data.name)
-			setEmail(response.data.des)
-			setLogin(response.data.login)
+			setDescription(response.data.description)
+			setDifficulty(response.data.difficulty)
         })
 	}, [userId]);
 	
@@ -42,8 +42,8 @@ export default function EditTask() {
 
 		const data = {
 			name,
-			email,
-			login
+			description,
+			difficulty
 		};
 
 		try {
@@ -71,11 +71,22 @@ export default function EditTask() {
 				</button>
 				<form action="">
 					<h2>Nome:</h2>
-					<input type="text"/>
+					<input 
+						value={name}
+						onChange={ e => setName(e.target.value) }
+					/>
 					<h2>Descrição:</h2>
-					<input type="text"/>
+					<input 
+
+						value={description}
+						onChange={ e => setDescription(e.target.value) }
+					/>
 					<h2>Dificuldade:</h2>
-					<input type="text"/>
+					<input 
+
+						value={difficulty}
+						onChange={ e => setDifficulty(e.target.value) }
+					/>
 					<button className="button" type="submit">Atualizar</button>
 				</form>
 			</div>

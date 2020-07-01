@@ -73,4 +73,17 @@ module.exports = {
 
 		return response.status(204).send();
 	},
+
+	async show(request, response) {
+        const user_id = request.headers.authorization;
+		const { id } = request.params;
+        const task = await connection('tasks')
+            .where({
+				'user_id':user_id,
+				'id': id})
+			.select('*')
+			.first();
+
+        return response.json(task);
+	},
 };
