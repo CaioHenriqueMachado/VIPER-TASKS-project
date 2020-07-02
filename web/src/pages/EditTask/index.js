@@ -5,24 +5,28 @@ import { FiLogIn, FiX } from 'react-icons/fi';
 import './styles.css';
 import finishModal from './script';
 import logoImg from '../../assests/logo1.svg';
+import test from './test';
 
 import api from '../../services/api';
 
-
-
 export default function EditTask() {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-	const [difficulty, setDifficulty] = useState('');
+	const [taskId, setTaskId] = useState(localStorage.getItem('taskId'));
+
+	const [name, setName] = useState(localStorage.getItem('taskName'));
+	const [description, setDescription] = useState(localStorage.getItem('taskDescription'));
+	const [difficulty, setDifficulty] = useState(localStorage.getItem('taskDifficulty'));
 
 	const history = useHistory();
 
 	const userId = localStorage.getItem('userId');
-	const taskId = localStorage.getItem('taskId');
+
+	console.log(localStorage.getItem('taskId'))
+	
 
 
-	// PAREI AQUI. CRIAR TASK QUE PUXA DOS DADOS DE 1 ID
 	useEffect(() => {
+		console.log('d')
+		console.log(localStorage.getItem('taskId'))
         api.get(`task/${taskId}`,{
             headers: {
                 Authorization: userId,
@@ -32,8 +36,9 @@ export default function EditTask() {
 			setDescription(response.data.description)
 			setDifficulty(response.data.difficulty)
         })
-	}, [userId]);
-	
+	}, []);
+
+	console.log(localStorage.getItem('taskId'))
 
 
 
@@ -46,6 +51,7 @@ export default function EditTask() {
 			difficulty
 		};
 
+		
 		try {
             await api.put(`users/${userId}`,data, {
                 headers: {
@@ -62,6 +68,7 @@ export default function EditTask() {
 		}
 	}
 	
+
 
 	return(
 		<div id="modal-edit" className="modal-container">
@@ -92,5 +99,6 @@ export default function EditTask() {
 			</div>
 		</div>
 	);
+	console.log(localStorage.getItem('taskId'))
 }
 

@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiTrash2, FiPower, FiEdit } from 'react-icons/fi';
 
 import EditTask from '../EditTask';
+
 import './styles.css';
 import initialModal from './script';
 
@@ -13,6 +14,8 @@ import api from '../../services/api';
 export default function Profile() {
     const [ tasks, setTasks ] = useState([]);
 
+
+    
     const history = useHistory();
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('userName');
@@ -43,10 +46,7 @@ export default function Profile() {
 
     async function handleIdTask(id) {
         localStorage.setItem('taskId', id);
-    }
 
-    async function clearIdTask(id) {
-        localStorage.setItem('taskId').clear();
     }
 
     function handleLogout() {
@@ -88,7 +88,7 @@ export default function Profile() {
                           <FiEdit size={20} color="#a8a8b3" />
                       </button>
 
-                      <button className="delete" onClick={() => (handleDeleteTask(task.id),clearIdTask(task.id))} type="button">
+                      <button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
                           <FiTrash2 size={20} color="#a8a8b3" />
                       </button>
                   </li>
