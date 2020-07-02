@@ -20,7 +20,6 @@ export default function EditTask() {
 
 	const userId = localStorage.getItem('userId');
 
-	console.log(localStorage.getItem('taskId'))
 	
 
 
@@ -38,7 +37,7 @@ export default function EditTask() {
         })
 	}, []);
 
-	console.log(localStorage.getItem('taskId'))
+
 
 
 
@@ -99,6 +98,6 @@ export default function EditTask() {
 			</div>
 		</div>
 	);
-	console.log(localStorage.getItem('taskId'))
+
 }
 
