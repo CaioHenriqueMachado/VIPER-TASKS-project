@@ -1,44 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiX } from 'react-icons/fi';
+import { FiX } from 'react-icons/fi';
 
 import './styles.css';
 import finishModal from './script';
 import logoImg from '../../assests/logo1.svg';
-import test from './test';
+
 
 import api from '../../services/api';
 
 export default function EditTask() {
-	const [taskId, setTaskId] = useState(localStorage.getItem('taskId'));
+	const [taskId, setTaskId] = useState('');
 
-	const [name, setName] = useState(localStorage.getItem('taskName'));
-	const [description, setDescription] = useState(localStorage.getItem('taskDescription'));
-	const [difficulty, setDifficulty] = useState(localStorage.getItem('taskDifficulty'));
+	const [name, setName] = useState('');
+	const [description, setDescription] = useState('');
+	const [difficulty, setDifficulty] = useState('');
 
 	const history = useHistory();
 
 	const userId = localStorage.getItem('userId');
 
-	
-
 
 	useEffect(() => {
-		console.log('d')
-		console.log(localStorage.getItem('taskId'))
-        api.get(`task/${taskId}`,{
-            headers: {
-                Authorization: userId,
-            }
-        }).then(response => {
-			setName(response.data.name)
-			setDescription(response.data.description)
-			setDifficulty(response.data.difficulty)
-        })
-	}, []);
+		setName(localStorage.getItem('taskName'))
+		setDescription(localStorage.getItem('taskDescription'))
+		setDifficulty(localStorage.getItem('taskDifficulty'))
+
+		}, [localStorage.getItem('taskId')]);
 
 
-
+  	async function closeIdTask(){
+        setName('')
+        setDescription('')
+        setDifficulty('')
+    }
 
 
 	async function handleProfileEdit(e){
@@ -72,7 +67,7 @@ export default function EditTask() {
 	return(
 		<div id="modal-edit" className="modal-container">
 			<div className="modal">
-				<button className="close" onClick={() => finishModal('modal-edit')}>
+				<button className="close" onClick={() => (finishModal('modal-edit'), closeIdTask())}>
 					<FiX size={40} color="black"/>
 				</button>
 				<form action="">
