@@ -56,7 +56,6 @@ export default function Profile() {
 			setDescription(response.data.description)
 			setDifficulty(response.data.difficulty)
         })
-        
     }
 
     async function closeIdTask(){
