@@ -11,8 +11,9 @@ import logoImg from '../../assests/logo1.svg';
 import api from '../../services/api';
 
 export default function Profile() {
+    const [chave, setChave ] = useState(0);
     const [ tasks, setTasks ] = useState([]);
-
+    const [ task, setTask ] = useState('');
     const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
     const [difficulty, setDifficulty] = useState('');
@@ -29,7 +30,7 @@ export default function Profile() {
         }).then(response => {
             setTasks(response.data);
         })
-    }, [userId]);
+    }, [chave]);
 
     async function handleDeleteTask(id) {
         try {
@@ -45,7 +46,7 @@ export default function Profile() {
     }
 
     async function handleIdTask(id) {
-        localStorage.setItem('taskId', id);
+        setTask(id);
         api.get(`task/${id}`,{
             headers: {
                 Authorization: userId,
@@ -69,6 +70,28 @@ export default function Profile() {
         history.push('/') ;
     }
 
+    async function handleUpdateTask(e){
+		e.preventDefault();
+
+		const data = {
+			name,
+			description,
+			difficulty
+		};
+
+		try {
+            await api.put(`tasks/${task}`,data, {
+                headers: {
+                    Authorization: userId,
+                }
+                });
+                setChave(chave + 1);
+                
+		} catch(err){
+				alert ('Erro no cadastro, tente novamente')
+		}
+				
+}
 
     return (
         <>
@@ -116,7 +139,7 @@ export default function Profile() {
 				<button className="close" onClick={() => (finishModal('modal-edit'), closeIdTask())}>
 					<FiX size={40} color="black"/>
 				</button>
-				<form action="">
+				<form onSubmit={handleUpdateTask}>
 					<h2>Nome:</h2>
 					<input 
 						value={name}
@@ -134,7 +157,7 @@ export default function Profile() {
 						value={difficulty}
 						onChange={ e => setDifficulty(e.target.value) }
 					/>
-					<button className="button" type="submit">Atualizar</button>
+					<button className="button" type="submit" onClick={() => finishModal('modal-edit')}>Atualizar</button>
 				</form>
 			</div>
 		</div>
