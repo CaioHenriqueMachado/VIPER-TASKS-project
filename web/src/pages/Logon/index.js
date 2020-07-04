@@ -8,10 +8,14 @@ import ideasImg from '../../assests/ideas.png';
 
 import api from '../../services/api';
 
+import Error from '../../Error';
+
 export default function Logon() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [showError, setShowError] = useState(false)
 
+    const message = 'oi';
     const history = useHistory();
     async function handleLogon(e){
         e.preventDefault();
@@ -29,11 +33,12 @@ export default function Logon() {
             alert ('Login realizado com sucesso');
             history.push('/profile');
         } catch(err){
-            alert ('Erro no Login, tente novamente')
+            setShowError(true);
         }
 
     }
     return(
+        <>
         <div className="logon-container">
             <img src={logoImg} alt="logo" className="logo"/>
             <section className="form">
@@ -60,5 +65,7 @@ export default function Logon() {
                 <img src={ideasImg} alt="painel" width={300}/>
             </div>
         </div>
+        {showError && <Error message={message} />}
+        </>
     );
 }
