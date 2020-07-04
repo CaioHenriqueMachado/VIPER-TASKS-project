@@ -25,24 +25,27 @@ module.exports = {
 
 		const user = await connection('users')
         .where('id', id_autho)
+        .select('*')
 		.first();
 
-		if( user.id != id){
+		if( user.id !== id){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
         }
         
-        if ( user.password != password ){
+        if ( user.password !== password ){
             return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
         }
 
-        if ( new_password != confirm_new_password ){
+        if ( new_password !== confirm_new_password ){
             return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
         }
 
-        if ( new_password == password ){
+        if ( new_password === password ){
             return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
         }
-
+        console.log(password)
+        console.log(new_password)
+        console.log(confirm_new_password)
 
 		await connection('users').where('id', id).update({
 			'password': new_password,

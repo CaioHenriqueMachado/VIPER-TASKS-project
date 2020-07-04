@@ -22,7 +22,7 @@ routes.delete('/tasks/:id', TaskController.delete);
 routes.get('/profile', ProfileController.index);
 
 routes.post('/session', SessionController.create);
-routes.put('/session/:id', SessionController.update);
+routes.put('/sessions/:id', SessionController.update);
 
 module.exports = routes;
 // npm start

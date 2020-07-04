@@ -30,7 +30,7 @@ export default function Profile() {
         }).then(response => {
             setTasks(response.data);
         })
-    }, [chave]);
+    }, [chave, userId]);
 
     async function handleDeleteTask(id) {
         try {
@@ -84,7 +84,7 @@ export default function Profile() {
                     Authorization: userId,
                 }
                 });
-                setChave(chave + 1);
+                setChave(chave+ 1);
                 
 		} catch(err){
 				alert ('Erro no cadastro, tente novamente')

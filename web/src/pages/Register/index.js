@@ -25,7 +25,7 @@ export default function Register() {
         };
 
         try {
-            const response =  await api.post('users', data);
+            await api.post('users', data);
             alert ('Cadastro realizado com sucesso');
             history.push('/');
         } catch(err){

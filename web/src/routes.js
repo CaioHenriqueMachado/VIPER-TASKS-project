@@ -16,7 +16,7 @@ export default function Routes () {
 				<Route path="/tasks/new" component={NewTask} />
 				<Route path="/register" component={Register} />
 				<Route path="/profile" exact component={Profile} />
-				<Route path="/profile/edit/pwd" component={EditSession} />
+				<Route path="/profile/edit/pwd" exact component={EditSession} />
 				<Route path="/profile/edit" exact component={EditProfile} />
 			</Switch>
 		</BrowserRouter>
