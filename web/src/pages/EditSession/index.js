@@ -10,8 +10,8 @@ import api from '../../services/api';
 
 export default function EditSession() {
 	const [password, setPassword] = useState('');
-	const [password_new, setPassword_new] = useState('');
-	const [password_new2, setPassword_new2] = useState('');
+	const [new_password, setNew_password] = useState('');
+	const [confirm_new_password, setConfirm_new_password] = useState('');
 
 	const history = useHistory();
 
@@ -22,12 +22,16 @@ export default function EditSession() {
 
 		const data = {
 			password,
-			password_new,
-			password_new2
+			new_password,
+			confirm_new_password
 		};
 
 		try {
-
+			console.log('frontEnd')
+			console.log(password)
+			console.log(new_password)
+			console.log(confirm_new_password)
+			console.log(userId)
             await api.put(`sessions/${userId}`,data, {
                 headers: {
                     Authorization: userId,
@@ -37,7 +41,7 @@ export default function EditSession() {
 			history.push('/profile');
 			
 		} catch(err){
-				alert ('Erro na atualização, tente novamenti')
+				alert ('Erro na atualização, tente novamente')
 		}
 	}
 	
@@ -49,6 +53,7 @@ export default function EditSession() {
 					<h1>Redefinir senha</h1>
 					<h2>Senha antiga</h2>
 					<input 
+						id="loco"
 						type="text"
 						value={password}
 						onChange={ e => setPassword(e.target.value) }
@@ -57,14 +62,14 @@ export default function EditSession() {
 					<h2>Senha nova</h2>
 					<input 
 						type="text"
-						value={password_new}
-						onChange={ e => setPassword_new(e.target.value) }
+						value={new_password}
+						onChange={ e => setNew_password(e.target.value) }
 					/>
 					<h2>Senha nova</h2>
 					<input 
 						type="text"
-						value={password_new2}
-						onChange={ e => setPassword_new2(e.target.value) }
+						value={confirm_new_password}
+						onChange={ e => setConfirm_new_password(e.target.value) }
 					/>
 					<button className="button" type="submit">Atualizar</button>
 					<Link to="/profile" className="back-link">

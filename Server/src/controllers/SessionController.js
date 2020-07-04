@@ -20,7 +20,7 @@ module.exports = {
     async update( request, response ) {
         const  id_autho  = request.headers.authorization;
         const { id } = request.params;
-		const { password, new_password, confirm_new_password  } = request.body;
+		const { password, new_password, confirm_new_password } = request.body;
 
 
 		const user = await connection('users')
@@ -43,9 +43,6 @@ module.exports = {
         if ( new_password === password ){
             return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
         }
-        console.log(password)
-        console.log(new_password)
-        console.log(confirm_new_password)
 
 		await connection('users').where('id', id).update({
 			'password': new_password,
