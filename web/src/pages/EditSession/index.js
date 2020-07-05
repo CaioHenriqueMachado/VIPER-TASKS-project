@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiSettings } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -72,8 +72,8 @@ export default function EditSession() {
 						onChange={ e => setConfirm_new_password(e.target.value) }
 					/>
 					<button className="button" type="submit">Atualizar</button>
-					<Link to="/profile" className="back-link">
-						<FiLogIn size={16} color="#0609be"/>
+					<Link to="/profile/edit" className="back-link">
+						<FiSettings size={16} color="#0609be"/>
 						Voltar para suas configurações
 					</Link>
 				</form>

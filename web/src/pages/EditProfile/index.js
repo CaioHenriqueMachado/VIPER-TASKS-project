@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi';
+import { FiLogIn, FiKey } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -85,7 +85,12 @@ export default function EditProfile() {
 						value={login}
 						onChange={ e => setLogin(e.target.value) }
 					/>
+					<Link to="/pwd" className="back-link">
+						<FiKey size={16} color="#0609be"/>
+						Alterar senha
+					</Link>
 					<button className="button" type="submit">Atualizar</button>
+					
 					<Link to="/profile" className="back-link">
 						<FiLogIn size={16} color="#0609be"/>
 						Voltar para tarefas
