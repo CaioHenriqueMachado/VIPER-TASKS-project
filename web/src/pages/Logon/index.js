@@ -15,9 +15,10 @@ export default function Logon() {
     const [password, setPassword] = useState('');
     const [validate, setValidate] = useState(false);
 
-    const message = 'oi';
+    const message = 'Login ou senha inválida!!';
 
     const history = useHistory();
+
     async function handleLogon(e){
         e.preventDefault();
 
@@ -35,10 +36,11 @@ export default function Logon() {
             history.push('/profile');
         } catch(err){
             setValidate(true);
-
+            setValidate(false);
             
         }
 
+        
     }
     return(
         <>
@@ -71,4 +73,5 @@ export default function Logon() {
         <Error message={message} validate={validate} />
         </>
     );
+
 }

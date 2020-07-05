@@ -15,14 +15,24 @@
     display: flex;
 }
 
-.boxAlert {
-    width: 10vw;
-    overflow: hidden;
-    background: #f1f1f1;
-    top: 50%;
-    left: 50%;
-    z-index: 9999;
-    padding: 10px;
-    text-align: center;
-
+.button.error{
+    width: 100px;
+    color: black;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    box-shadow: 0 0 5px black;
+    margin-top: 20px;
 }
+
+.boxAlert {
+    width: 50vw;
+    height: 30vh;
+    background: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 0 20px black;
+    z-index: 9999;
+    justify-content: center;
+    text-align: center;
+    padding-top: 15px;
+}
+
