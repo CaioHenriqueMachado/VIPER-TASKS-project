@@ -8,11 +8,15 @@ import logoImg from '../../assests/logo1.svg';
 
 import api from '../../services/api';
 
+import Error from '../../Error';
+
 export default function EditSession() {
 	const [password, setPassword] = useState('');
 	const [new_password, setNew_password] = useState('');
 	const [confirm_new_password, setConfirm_new_password] = useState('');
+    const [validate, setValidate] = useState(false);
 
+    const message = 'Sua senha não cumpre as validacões';
 	const history = useHistory();
 
 	const userId = localStorage.getItem('userId');
@@ -37,15 +41,17 @@ export default function EditSession() {
                     Authorization: userId,
                 }
 			});
-			alert ('Senha atualizada com sucesso');
+			
 			history.push('/profile');
 			
 		} catch(err){
-				alert ('Erro na atualização, tente novamente')
+			setValidate(true);
+            setValidate(false);
 		}
 	}
 	
 	return(
+		<>
 		<div className="logon-container">
 			<img src={logoImg} alt="logo" className="logo"/>
 			<section className="form">
@@ -54,22 +60,31 @@ export default function EditSession() {
 					<h2>Senha antiga</h2>
 					<input 
 						id="loco"
-						type="text"
+						type="password"
 						value={password}
 						onChange={ e => setPassword(e.target.value) }
+						required
+                        minLength='8'
+                        maxLength='30'
 
 					/>
 					<h2>Senha nova</h2>
 					<input 
-						type="text"
+						type="password"
 						value={new_password}
 						onChange={ e => setNew_password(e.target.value) }
+						required
+                        minLength='8'
+                        maxLength='30'
 					/>
 					<h2>Senha nova</h2>
 					<input 
-						type="text"
+						type="password"
 						value={confirm_new_password}
 						onChange={ e => setConfirm_new_password(e.target.value) }
+						required
+                        minLength='8'
+                        maxLength='30'
 					/>
 					<button className="button" type="submit">Atualizar</button>
 					<Link to="/profile/edit" className="back-link">
@@ -79,5 +94,7 @@ export default function EditSession() {
 				</form>
 			</section>
 		</div>
+		<Error message={message} validate={validate} />
+		</>
 	)
 }

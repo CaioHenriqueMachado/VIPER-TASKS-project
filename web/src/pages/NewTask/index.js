@@ -7,11 +7,15 @@ import logoImg from '../../assests/logo1.svg';
 
 import api from '../../services/api';
 
+import Error from '../../Error';
+
 export default function NewTask() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 	const [difficulty, setDifficulty] = useState('');
+    const [validate, setValidate] = useState(false);
 
+    const message = 'Sua tarefa não cumpre as validacões';
 	const history = useHistory();
 
 	const userId = localStorage.getItem('userId');
@@ -35,11 +39,13 @@ export default function NewTask() {
 				alert ('Cadastro realizado com sucesso');
 				history.push('/profile');
 		} catch(err){
-				alert ('Erro no cadastro, tente novamente')
+			setValidate(true);
+            setValidate(false);
 		}
 				
 }
     return (
+		<>
         <div className="new-incident-container">
         <div className="content">
             <section>
@@ -58,16 +64,25 @@ export default function NewTask() {
 								<input placeholder="Título da tarefa"
 									value={name}
 									onChange={ e => setName(e.target.value) }
+									required
+									minLength='4'
+									maxLength='100'
                 />
 
                 <textarea placeholder="Descrição"
 									value={description}
 									onChange={ e => setDescription(e.target.value) }
+									required
+									minLength='10'
+									maxLength='250'
                 />
 
                 <input placeholder="Nível de dificuldade" 
 									value={difficulty}
 									onChange={ e => setDifficulty(e.target.value) }
+									required
+									minLength='4'
+									maxLength='20'
                 />
                     
            
@@ -76,5 +91,7 @@ export default function NewTask() {
             </form>
         </div>
     </div>
+	<Error message={message} validate={validate} />
+	</>
     );
 }

@@ -6,6 +6,8 @@ import './styles.css';
 import initialModal from './script';
 import finishModal from './script2';
 
+import Error from '../../Error';
+
 import logoImg from '../../assests/logo1.svg';
 
 import api from '../../services/api';
@@ -17,7 +19,9 @@ export default function Profile() {
     const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
     const [difficulty, setDifficulty] = useState('');
-    
+    const [validate, setValidate] = useState(false);
+    const [message, setMessage] = useState('');
+
     const history = useHistory();
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('userName');
@@ -40,8 +44,10 @@ export default function Profile() {
                 }
             });
             setTasks(tasks.filter(task => task.id !== id));
-        }catch(err) {
-            alert('Erro ao deletar caso, tente novamente.');
+        }catch(err) {   
+            setMessage('Erro ao deletar Tarefa !!!');
+            setValidate(true);
+            setValidate(false);
         }
     }
 
@@ -87,7 +93,9 @@ export default function Profile() {
                 setChave(chave+ 1);
                 
 		} catch(err){
-				alert ('Erro no cadastro, tente novamente')
+            setMessage('Sua tarefa não cumpre o tamanho mínimo');
+            setValidate(true);
+            setValidate(false);
 		}
 				
 }
@@ -145,25 +153,28 @@ export default function Profile() {
 					<h2>Nome:</h2>
 					<input 
 						value={name}
-						onChange={ e => setName(e.target.value) }
+                        onChange={ e => setName(e.target.value) }
+                        maxLength='100'
+
 					/>
 					<h2>Descrição:</h2>
-					<input 
-
+					<textarea 
 						value={description}
-						onChange={ e => setDescription(e.target.value) }
+                        onChange={ e => setDescription(e.target.value) }
+                        maxLength='250'
+        
 					/>
 					<h2>Dificuldade:</h2>
 					<input 
-
 						value={difficulty}
-						onChange={ e => setDifficulty(e.target.value) }
+                        onChange={ e => setDifficulty(e.target.value) }
+                        maxLength='20'
 					/>
 					<button className="button" type="submit" onClick={() => finishModal('modal-edit')}>Atualizar</button>
 				</form>
 			</div>
 		</div>
-    
+        <Error message={message} validate={validate} />
         </>
         
     );

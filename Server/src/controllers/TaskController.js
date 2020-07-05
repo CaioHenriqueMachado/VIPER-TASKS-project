@@ -17,7 +17,7 @@ module.exports = {
 		const {name, description, difficulty} = request.body;
 		const user_id = request.headers.authorization;
 
-		if (name.length < 4 || description.length < 10 || difficulty.length < 4){
+		if (name.length < 4 || difficulty.length < 4){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
 		}
 
@@ -36,7 +36,7 @@ module.exports = {
 		const {name, description, difficulty, concluded} = request.body;
 		const user_id = request.headers.authorization;
 
-		if (name.length < 4 || description.length < 10 || difficulty.length < 4){
+		if (name.length < 4 || difficulty.length < 4){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
 		}
 

@@ -8,13 +8,15 @@ import logoImg from '../../assests/logo1.svg';
 
 import api from '../../services/api';
 
-
+import Error from '../../Error';
 
 export default function EditProfile() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [login, setLogin] = useState('');
+    const [validate, setValidate] = useState(false);
 
+    const message = 'Seu cadastro não cumpre as validacões';
 	const history = useHistory();
 
 	const userId = localStorage.getItem('userId');
@@ -50,17 +52,18 @@ export default function EditProfile() {
                 }
 			});
 			localStorage.setItem('userName', data.name);
-			alert ('Cadastro atualizado com sucesso');
 			
-				history.push('/profile');
+			history.push('/profile');
 			
 		} catch(err){
-				alert ('Erro no cadastro, tente novamente')
+			setValidate(true);
+            setValidate(false);
 		}
 	}
 	
 
 	return(
+		<>
 		<div className="logon-container">
 			<img src={logoImg} alt="logo" className="logo"/>
 			<section className="form">
@@ -71,19 +74,27 @@ export default function EditProfile() {
 						id="loco"
 						value={name}
 						onChange={ e => setName(e.target.value) }
-
+                        required
+                        minLength='4'
+                        maxLength='15'
 					/>
 					<h2>E-mail</h2>
 					<input 
 
 						value={email}
 						onChange={ e => setEmail(e.target.value) }
+						required
+                        minLength='7'
+                        maxLength='30'
 					/>
 					<h2>Login</h2>
 					<input 
 
 						value={login}
 						onChange={ e => setLogin(e.target.value) }
+						required
+                        minLength='8'
+                        maxLength='30'
 					/>
 					<Link to="/pwd" className="back-link">
 						<FiKey size={16} color="#0609be"/>
@@ -98,5 +109,7 @@ export default function EditProfile() {
 				</form>
 			</section>
 		</div>
+		<Error message={message} validate={validate} />
+		</>
 	)
 }

@@ -7,11 +7,16 @@ import logoImg from '../../assests/logo1.svg';
 
 import api from '../../services/api';
 
+import Error from '../../Error';
+
 export default function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [validate, setValidate] = useState(false);
+
+    const message = 'Seu cadastro não cumpre as validacões';
 
     const history = useHistory();
     async function handleRegister(e){
@@ -29,7 +34,8 @@ export default function Register() {
             alert ('Cadastro realizado com sucesso');
             history.push('/');
         } catch(err){
-            alert ('Erro no cadastro, tente novamente')
+            setValidate(true);
+            setValidate(false);
         }
         
 
@@ -38,6 +44,7 @@ export default function Register() {
 
 
     return (
+        <>
         <div className="register-container">
             <div className="content">
                 <section>
@@ -58,7 +65,7 @@ export default function Register() {
                         value={name}
                         onChange={ e => setName(e.target.value) }
                         required
-                        minLength='3'
+                        minLength='4'
                         maxLength='15'
                         
                     />                 
@@ -68,6 +75,8 @@ export default function Register() {
                         value={email}
                         onChange={ e => setEmail(e.target.value) }
                         required
+                        minLength='7'
+                        maxLength='30'
                     />
                     <input 
                         placeholder="Login" 
@@ -75,7 +84,7 @@ export default function Register() {
                         onChange={ e => setLogin(e.target.value) }
                         required
                         minLength='8'
-                        maxLength='20'
+                        maxLength='30'
                     />
                     <input
                         type="password"
@@ -91,5 +100,7 @@ export default function Register() {
                 </form>
             </div>
         </div>
+        <Error message={message} validate={validate} />
+        </>
     );
     }
