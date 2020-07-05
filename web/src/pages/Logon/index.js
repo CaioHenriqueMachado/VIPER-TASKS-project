@@ -13,9 +13,10 @@ import Error from '../../Error';
 export default function Logon() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
-    const [showError, setShowError] = useState(false)
+    const [validate, setValidate] = useState(false);
 
     const message = 'oi';
+
     const history = useHistory();
     async function handleLogon(e){
         e.preventDefault();
@@ -33,7 +34,9 @@ export default function Logon() {
             alert ('Login realizado com sucesso');
             history.push('/profile');
         } catch(err){
-            setShowError(true);
+            setValidate(true);
+
+            
         }
 
     }
@@ -65,7 +68,7 @@ export default function Logon() {
                 <img src={ideasImg} alt="painel" width={300}/>
             </div>
         </div>
-        {showError && <Error message={message} />}
+        <Error message={message} validate={validate} />
         </>
     );
 }
