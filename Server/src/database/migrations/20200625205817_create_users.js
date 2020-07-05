@@ -6,8 +6,8 @@ exports.up = function(knex) {
       table.string('password').notNullable();
       table.string('name').notNullable();
       table.string('email').notNullable();
-      table.boolean('blocked').notNullable();
-      table.boolean('admin').notNullable();
+      table.boolean('blocked').notNullable().defaultTo(false);
+      table.boolean('admin').notNullable().defaultTo(false);
     });
 };
 

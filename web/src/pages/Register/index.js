@@ -54,25 +54,37 @@ export default function Register() {
                 </section>
                 <form onSubmit={handleRegister}>
                     <input 
-                        placeholder="Nome"
+                        placeholder="First Name"
                         value={name}
                         onChange={ e => setName(e.target.value) }
+                        required
+                        minLength='3'
+                        maxLength='15'
+                        
                     />                 
                     <input 
                         type="email" 
                         placeholder="E-mail"
                         value={email}
                         onChange={ e => setEmail(e.target.value) }
+                        required
                     />
                     <input 
                         placeholder="Login" 
                         value={login}
                         onChange={ e => setLogin(e.target.value) }
+                        required
+                        minLength='8'
+                        maxLength='20'
                     />
-                    <input 
+                    <input
+                        type="password"
                         placeholder="Senha" 
                         value={password}
                         onChange={ e => setPassword(e.target.value) }
+                        required
+                        minLength='8'
+                        maxLength='20'
                     />
 
                     <button className="button" type="submit">Cadastrar</button>

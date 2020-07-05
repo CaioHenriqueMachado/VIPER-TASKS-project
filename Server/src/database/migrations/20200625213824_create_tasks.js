@@ -5,7 +5,7 @@ exports.up = function(knex) {
 		table.string('name').notNullable();
 		table.string('description').notNullable();
 		table.string('difficulty').notNullable();
-		table.boolean('concluded').notNullable();
+		table.boolean('concluded').notNullable().defaultTo(false);
 
 		table.string('user_id').notNullable();
 

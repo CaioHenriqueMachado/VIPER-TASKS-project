@@ -52,11 +52,15 @@ export default function Logon() {
                         placeholder="Login"
                         value={login}
                         onChange={ e => setLogin(e.target.value) }
+                        minLength='8'
+                        maxLength='20'
                     />
                     <input 
                         placeholder="Password" 
                         value={password}
                         onChange={ e => setPassword(e.target.value) }
+                        minLength='8'
+                        maxLength='20'
                     />
                     <button className="button" type="submit">Entrar</button>
                     <Link to="/register" className="back-link">

@@ -22,6 +22,9 @@ module.exports = {
         const { id } = request.params;
 		const { password, new_password, confirm_new_password } = request.body;
 
+        if (new_password.length < 8 || confirm_new_password.length < 8 ){
+			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
+		}
 
 		const user = await connection('users')
         .where('id', id_autho)
