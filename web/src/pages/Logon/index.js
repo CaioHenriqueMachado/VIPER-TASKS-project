@@ -32,7 +32,6 @@ export default function Logon() {
             localStorage.setItem('userName', response.data.name);
             localStorage.setItem('userId', response.data.id);
 
-            alert ('Login realizado com sucesso');
             history.push('/profile');
         } catch(err){
             setValidate(true);

@@ -26,13 +26,21 @@
 }
 
 .profile-container header button {
-    height: 60px;
     width: 60px;
     border-radius: 4px;
-    border: 1px solid #dcdce6;
-    background: transparent;
+    background: #0609be;
     margin-left: 16px;
     transition: border-color 0.2s;
+    padding-top: 10px;
+}
+
+.button.editProfile {
+    width: 60px;
+    /* border: 1px solid #dcdce6; */
+    margin-left: 16px;
+    border-radius: 4px;
+    background: #0609be;
+    padding-top: 8px;
 }
 
 .profile-container header button:hover {

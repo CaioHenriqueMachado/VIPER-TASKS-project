@@ -102,12 +102,15 @@ export default function Profile() {
                 <Link className="button" to="/tasks/new">
                     Cadastrar um novo caso
                 </Link>
-                <button  type="button" onClick={handleLogout}>
-                    <FiPower size={24} color="#0609be" />
+                <Link className="button editProfile" to="/profile/edit">
+                    <FiEdit size={30} color="#dcdce6" />
+                </Link>
+                <button className="button" type="button" onClick={handleLogout}>
+                    <FiPower size={30} color="#dcdce6" />
                 </button>
             </header>
 
-            <h1>Casos cadastrados</h1>
+            <h1>Sua lista de tarefas</h1>
 
             <ul>
                 {tasks.map(task =>(
