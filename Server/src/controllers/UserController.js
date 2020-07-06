@@ -37,6 +37,7 @@ module.exports = {
 	async update( request, response ) {
 		const  id  = request.headers.authorization;
 		const { name, email, login } = request.body;
+		const updated_at = GetDate();
 
 		if (login.length < 4 || name.length < 4 || email.length < 7){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
@@ -53,7 +54,8 @@ module.exports = {
 		await connection('users').where('id', id).update({
 			'name': name,
 			'email': email,
-			'login': login
+			'login': login,
+			'updated_at': updated_at
 		});
 
 		return response.status(200).send();

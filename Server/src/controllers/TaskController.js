@@ -1,5 +1,5 @@
 const connection = require('../database/connection');
-
+const GetDate = require('../controllers/GetDateController');
 
 module.exports = {
 	// Para listar tasks do usuario
@@ -16,6 +16,8 @@ module.exports = {
 	async create( request, response ) {
 		const {name, description, difficulty} = request.body;
 		const user_id = request.headers.authorization;
+		const created_at = GetDate();
+		const updated_at = created_at
 
 		if (name.length < 4 || difficulty.length < 4){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
@@ -26,6 +28,8 @@ module.exports = {
 			description,
 			difficulty,
 			user_id,
+			created_at,
+			updated_at
 		});
 
 	return response.json({ id });
@@ -35,6 +39,7 @@ module.exports = {
 		const { id } = request.params;
 		const {name, description, difficulty, concluded} = request.body;
 		const user_id = request.headers.authorization;
+		const updated_at = GetDate();
 
 		if (name.length < 4 || difficulty.length < 4){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
@@ -53,7 +58,8 @@ module.exports = {
 			'name': name,
 			'description': description,
 			'difficulty':difficulty,
-			'concluded':concluded
+			'concluded':concluded,
+			'updated_at': updated_at
 
 
 		});
