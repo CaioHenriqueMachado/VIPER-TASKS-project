@@ -8,6 +8,8 @@ exports.up = function(knex) {
       table.string('email').notNullable();
       table.boolean('blocked').notNullable().defaultTo(false);
       table.boolean('admin').notNullable().defaultTo(false);
+      table.string('created_at').notNullable();
+      table.string('updated_at').notNullable();
     });
 };
 

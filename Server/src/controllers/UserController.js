@@ -1,7 +1,7 @@
 const connection = require('../database/connection');
+const GetDate = require('../controllers/GetDateController');
 const crypto = require('crypto');
-const { exit } = require('process');
-
+// const { exit } = require('process');
 
 module.exports = {
 	// Só vai ser usado caso crie um admin
@@ -14,7 +14,9 @@ module.exports = {
 	async create( request, response ) {
 		const { login, password, name, email } = request.body;
 		const id = crypto.randomBytes(30).toString('HEX');
-
+		const created_at = GetDate();
+		
+		console.log(created_at);
 		if (login.length < 4 || password.length < 8 || name.length < 4 || email.length < 7){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
 		}
@@ -24,7 +26,8 @@ module.exports = {
 				login,
 				password,
 				name,
-				email
+				email,
+				created_at
 		});
 		return response.json({ id });
 	

@@ -6,7 +6,9 @@ exports.up = function(knex) {
 		table.string('description').notNullable();
 		table.string('difficulty').notNullable();
 		table.boolean('concluded').notNullable().defaultTo(false);
-
+		table.string('created_at').notNullable();
+		table.string('updated_at').notNullable();
+		
 		table.string('user_id').notNullable();
 
 		table.foreign('user_id').references('id').inTable('users');
