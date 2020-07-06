@@ -15,7 +15,7 @@ module.exports = {
 		const { login, password, name, email } = request.body;
 		const id = crypto.randomBytes(30).toString('HEX');
 		const created_at = GetDate();
-		
+		const updated_at = created_at
 		console.log(created_at);
 		if (login.length < 4 || password.length < 8 || name.length < 4 || email.length < 7){
 			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
@@ -27,7 +27,8 @@ module.exports = {
 				password,
 				name,
 				email,
-				created_at
+				created_at,
+				updated_at
 		});
 		return response.json({ id });
 	
