@@ -8,5 +8,4 @@ module.exports = () => {
         created_at += data.getMinutes().toString().padStart(2, '0');
         created_at += data.getSeconds().toString().padStart(2, '0');
         return created_at
-    
     }

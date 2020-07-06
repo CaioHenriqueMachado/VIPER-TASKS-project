@@ -75,7 +75,7 @@ export default function Register() {
                         value={email}
                         onChange={ e => setEmail(e.target.value) }
                         required
-                        minLength='7'
+                        minLength='8'
                         maxLength='30'
                     />
                     <input 
