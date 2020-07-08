@@ -61,7 +61,7 @@ input.logon {
   border-bottom: 3px solid #39ff14;
 }
 
-div.input input:focus ~ div.placeholder{
+div.input input:focus ~ div.placeholder.focus{
   transition: .3s;
   top: -25px;
   color: #39ff14;
