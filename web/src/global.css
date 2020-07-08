@@ -13,9 +13,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-div.body {
-  width: 90vw;
-  margin: 0 auto;
+div.container {
+  width: 100vw;
+  height: 100vh;
+  padding: 0 5%;
+}
+
+div.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Foi colocado abaixo novamente porque os campos não pegam font da Body */
@@ -40,7 +47,7 @@ form input {
   height: 60px;
   color: rgb(43, 42, 42);
   border: 1px solid #dcdce6;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   padding: 0 24px;
   margin: 5px 0;
 }

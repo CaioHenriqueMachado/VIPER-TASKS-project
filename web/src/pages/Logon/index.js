@@ -43,59 +43,51 @@ export default function Logon() {
 
 return(
 	<>
-	<div className="body">
-			<div className="logon-container">
+		<div className="container center">
 				{/* <img src={logoImg} alt="logo" className="logo"/> */}
-				<section className="form">
+				<section className="loginScreen">
 					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
-					<h1>Seja bem vindo</h1>
+					<h1 className='logon'>Seja bem vindo</h1>
 					<form onSubmit={handleLogon}>
-						<div className="input-div one">
-							<div className="icon-div">
-							<FiUser className="icon" size={16} color="#0609be"/>
-							</div>
-							<div>
-								<h5>Usuário</h5>
-								<input 
-									id="inputUser"
-									className="input"
-									value={login}
-									onChange={ e => setLogin(e.target.value) }
-									minLength='8'
-									maxLength='20'
-								/>
+						<div class="input">
+							<input
+								className='logon' 
+								value={login}
+								onChange={ e => setLogin(e.target.value) }
+								minLength='8'
+								maxLength='20'
+							/>
+							<div class="placeholder">Usuário</div>
+							<div class="icon">
+							<FiUser className="icon" size={24} color="#39ff14"/>
 							</div>
 						</div>
-						<br></br><br></br><br></br>
-						<div class="input-div two">
-							<div class="icon-div">
-							<FiLock className="icon" size={16} color="#0609be"/>
-							</div>
-							<div>
-								<h5>Senha</h5>
-								<input 
-									className="input"
-									type="password"
-									value={password}
-									onChange={ e => setPassword(e.target.value) }
-									minLength='8'
-									maxLength='20'
-								/>
+						<div class="input">
+							<input
+								className='logon' 
+								type="password"
+								value={password}
+								onChange={ e => setPassword(e.target.value) }
+								minLength='8'
+								maxLength='20'
+							/>
+							<div class="placeholder">Senha</div>
+							<div class="icon">
+							<FiLock className="icon" size={24} color="#39ff14"/>
 							</div>
 						</div>
+
 						<button className="login-button">
-          		Entrar
-          		<span></span>
+          		Entrar<span></span>
         		</button>
 					</form>
 					<Link to="/register" className="back-link">
 						<FiLogIn size={16} color="#39ff14"/>Não tenho cadastro
 					</Link>
 				</section>
-				<div className="painel-logon">
+				{/* <div className="painel-logon">
 					<img src={wallpaperLogon} alt="painel" width={300}/>
-				</div>
-			</div>
+				</div> */}
 			<Error message={message} validate={validate} />
 		</div>
 			

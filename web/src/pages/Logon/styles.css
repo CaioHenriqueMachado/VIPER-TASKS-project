@@ -1,11 +1,73 @@
-.logon-container {
-	height: 100vh;
-	display: flex; 
-	flex-direction: column;
-	align-items: center;
+section.loginScreen{
+  /* background-color: green; */
+  width: 320px;
+  height: 380px;
 }
 
-.logon-container div.painel-logon {
+form {
+  /* background-color: black; */
+  width: 100%;
+  height: 80%;
+  text-align: center;
+  padding-top: 30px;
+}
+
+h1.logon {
+  text-transform: uppercase;
+  margin: 10px 0px;
+}
+
+div.input {
+  display: flex;
+  width: 250px;
+  height: 50px;  
+  background-color: whitesmoke;
+  margin: 40px auto;
+  position: relative;
+}
+
+div.placeholder {
+  height: 30px;
+  font-size: 16pt;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  left: 35px;
+  transition: .3s;
+  z-index: 1;
+}
+
+div.icon {
+  width: 30px;
+  height: 50px;
+  bottom: 0;
+  padding-top: 10px;
+  position: absolute;
+}
+
+input.logon {
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  padding-left: 35px;
+  right: 0;
+  bottom: 0;
+  border: none;
+  font-size: 16pt;
+  position: absolute;
+  background-color: rgba(150, 1, 1, 0);
+  z-index: 2;
+  margin: 0;
+  border-bottom: 3px solid #39ff14;
+}
+
+div.input input:focus ~ div.placeholder{
+  transition: .3s;
+  top: -25px;
+  color: #39ff14;
+}
+
+/* .logon-container div.painel-logon {
 	z-index: -100;
 	height: 100%;
 	width: 100%;
@@ -16,17 +78,6 @@
 	width: 550px;
 	bottom: 0;
 	left: 0;
-}
-/* ---------------------------------FORM---------------------------------------- */
-
-/* div.input-div {
-	background-color: yellow;
-	display: flex;
-}
-
-.input {
-	width: 100%;
-	height: 100%;
 } */
 
 
@@ -80,16 +131,6 @@ button.login-button:hover span::before, button.login-button:focus span::before {
 button.login-button:hover, button.login-button:focus {
   color: black;
 }
-
-
-
-
-
-
-
-
-
-
 
 @media only screen and (max-width: 400px) {
 	.logon-container div.painel-logon img {
