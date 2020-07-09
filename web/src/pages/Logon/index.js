@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn, FiUser, FiLock } from 'react-icons/fi';
 import './styles.css';
-import effectFocus from './script';
+
 import logoImg from '../../assests/logo1.svg';
 import avatarImg from '../../assests/avatar.svg';
 import wallpaperLogon from '../../assests/wallpaperLogon.png';
@@ -92,43 +92,6 @@ return(
 				</div> */}
 			<Error message={message} validate={validate} />
 		</div>
-			
-
-		{/* <div className="body">
-			<div className="logon-container">
-				<img src={logoImg} alt="logo" className="logo"/>
-				<section className="form">
-					<h1>Faça seu Login</h1>
-					<form onSubmit={handleLogon}>
-						<br></br>
-						<input 
-							placeholder="Login"
-							value={login}
-							onChange={ e => setLogin(e.target.value) }
-							minLength='8'
-							maxLength='20'
-						/>
-						<input 
-							placeholder="Password" 
-							type="password"
-							value={password}
-							onChange={ e => setPassword(e.target.value) }
-							minLength='8'
-							maxLength='20'
-						/>
-						<button className="button" type="submit">Entrar</button>
-					</form>
-					<Link to="/register" className="back-link">
-						<FiLogIn size={16} color="#0609be"/>Não tenho cadastro
-					</Link>
-				</section>
-				<div className="painel-logon">
-					<img src={wallpaperLogon} alt="painel" width={300}/>
-				</div>
-			</div>
-			<Error message={message} validate={validate} />
-		</div> */}
-		{/* <effectFocus/> */}
 	</>
 	);
 }
