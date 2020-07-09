@@ -5,7 +5,10 @@ import './styles.css';
 
 import logoImg from '../../assests/logo1.svg';
 import avatarImg from '../../assests/avatar.svg';
-import wallpaperLogon from '../../assests/wallpaperLogon.png';
+
+import wallpaperOne from '../../assests/wallpaperImage2.svg';
+import wallpaperTwo from '../../assests/wallpaperImage1.svg';
+
 
 import api from '../../services/api';
 
@@ -55,6 +58,7 @@ return(
 								className='logon' 
 								value={login}
 								onChange={ e => setLogin(e.target.value) }
+								required
 								minLength='8'
 								maxLength='20'
 							/>
@@ -69,6 +73,7 @@ return(
 								type="password"
 								value={password}
 								onChange={ e => setPassword(e.target.value) }
+								required
 								minLength='8'
 								maxLength='20'
 							/>
@@ -85,9 +90,10 @@ return(
 					</Link>
 					</form>
 				</section>
-				{/* <div className="painel-logon">
-					<img src={wallpaperLogon} alt="painel" width={300}/>
-				</div> */}
+				<div className="painel-logon">
+					<img src={wallpaperOne} className='left' alt="painel"/>
+					<img src={wallpaperTwo} className='right' alt="painel"/>
+				</div>
 			<Error message={message} validate={validate} />
 		</div>
 	</>

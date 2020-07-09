@@ -59,9 +59,16 @@ input.logon {
 }
 .container div.painel-logon img {
 	position: absolute;
-	width: 550px;
-	bottom: 0;
-	left: 0;
+	width: 250px;
+	bottom: 10px;
+
+}
+.container div.painel-logon img.left {
+  left: 5%;
+}
+
+.container div.painel-logon img.right {
+	right: 5%;
 }
 
 /* ---------------------------------BUTTON---------------------------------------- */

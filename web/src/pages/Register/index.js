@@ -5,7 +5,8 @@ import { FiArrowLeft, FiUser, FiLock, FiMail } from 'react-icons/fi';
 import './styles.css';
 import logoImg from '../../assests/logo1.svg';
 import avatarImg from '../../assests/avatar.svg';
-
+import wallpaperOne from '../../assests/wallpaperImage2.svg';
+import wallpaperTwo from '../../assests/wallpaperImage1.svg';
 
 import api from '../../services/api';
 
@@ -120,6 +121,11 @@ export default function Register() {
 				</Link>
                 </form>
 				</section>
+                <div className="painel-logon">
+					<img src={wallpaperOne} className='left' alt="painel"/>
+					<img src={wallpaperTwo} className='right' alt="painel"/>
+				</div>
+                <Error message={message} validate={validate} />
                 </div>
         {/* <div className="register-container">
             <div className="content">
