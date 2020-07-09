@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn, FiUser, FiLock } from 'react-icons/fi';
+import api from '../../services/api';
+
 import './styles.css';
-
-import logoImg from '../../assests/logo1.svg';
 import avatarImg from '../../assests/avatar.svg';
-
 import wallpaperOne from '../../assests/wallpaperImage2.svg';
 import wallpaperTwo from '../../assests/wallpaperImage1.svg';
-
-
-import api from '../../services/api';
 
 import Error from '../../Error';
 
@@ -47,7 +43,6 @@ export default function Logon() {
 return(
 	<>
 		<div className="container center">
-				{/* <img src={logoImg} alt="logo" className="logo"/> */}
 				<section className="loginScreen">
 					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
 					<h1 className='logon'>Seja bem vindo</h1>
@@ -81,7 +76,6 @@ return(
 							<FiLock className="icon" size={24} color="#014eb9"/>
 							</div>
 						</div>
-
 						<button className="login-button">
           		Entrar<span></span>
         		</button>

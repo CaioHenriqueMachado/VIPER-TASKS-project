@@ -9,7 +9,6 @@ form {
   height: 350px;
   text-align: center;
   padding-top: 10px;
-
 }
 
 h1.logon {
@@ -50,7 +49,6 @@ input.logon {
   border-bottom: 3px solid #014eb9;
 }
 
-
 .container div.painel-logon {
 	z-index: -100;
 	height: 100%;
@@ -70,9 +68,7 @@ input.logon {
 .container div.painel-logon img.right {
 	right: 5%;
 }
-
 /* ---------------------------------BUTTON---------------------------------------- */
-
 button.login-button {
 	border: none;
 	width: 100%;
@@ -91,8 +87,6 @@ button.login-button {
   margin: 40px 0px;
 }
 
-
-
 button.login-button span {
   position: absolute;
   left: 0;
@@ -103,8 +97,6 @@ button.login-button span {
   z-index: -1;
   border: 5px solid #014eb9;
 }
-
-
 
 button.login-button span::before {
   content: "";
