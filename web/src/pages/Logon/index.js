@@ -51,21 +51,20 @@ return(
 					<form onSubmit={handleLogon}>
 						<div className="input">
 							<input
-								// onFocus={ () => {effectFocus('logonInput')}}
+								placeholder="Usuário"
 								className='logon' 
 								value={login}
 								onChange={ e => setLogin(e.target.value) }
 								minLength='8'
 								maxLength='20'
 							/>
-							<div className="placeholder" id='fff'>Usuário</div>
 							<div className="icon">
-							<FiUser className="icon" size={24} color="#39ff14"/>
+							<FiUser className="icon" size={24} color="#014eb9"/>
 							</div>
 						</div>
 						<div className="input">
 							<input
-								onFocus={ () => {effectFocus('passwordInput')}}
+								placeholder="Senha"
 								className='logon' 
 								type="password"
 								value={password}
@@ -73,9 +72,8 @@ return(
 								minLength='8'
 								maxLength='20'
 							/>
-							<div className="placeholder" id='fff'>Senha</div>
 							<div className="icon">
-							<FiLock className="icon" size={24} color="#39ff14"/>
+							<FiLock className="icon" size={24} color="#014eb9"/>
 							</div>
 						</div>
 
@@ -84,12 +82,12 @@ return(
         		</button>
 					</form>
 					<Link to="/register" className="back-link">
-						<FiLogIn size={16} color="#39ff14"/>Não tenho cadastro
+						<FiLogIn size={16} color="#014eb9"/>Não tenho cadastro
 					</Link>
 				</section>
-				{/* <div className="painel-logon">
+				<div className="painel-logon">
 					<img src={wallpaperLogon} alt="painel" width={300}/>
-				</div> */}
+				</div>
 			<Error message={message} validate={validate} />
 		</div>
 	</>
