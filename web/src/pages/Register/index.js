@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiUser, FiLock, FiMail } from 'react-icons/fi';
 
 import './styles.css';
 import logoImg from '../../assests/logo1.svg';
+import avatarImg from '../../assests/avatar.svg';
+
 
 import api from '../../services/api';
 
@@ -45,7 +47,81 @@ export default function Register() {
 
     return (
         <>
-        <div className="register-container">
+        <div className="container center">
+            <section className="loginScreen">
+                <img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
+					<h1 className='logon'>CADASTRE-SE</h1>
+					<form onSubmit={handleRegister}>
+                    <div className="input">
+                    <input 
+                        placeholder="Nome"
+                        className='logon' 
+                        value={name}
+                        onChange={ e => setName(e.target.value) }
+                        required
+                        minLength='4'
+                        maxLength='15'
+                        
+                    />    
+                    <div className="icon">
+							<FiUser className="icon" size={24} color="#014eb9"/>
+							</div>
+						</div>
+                    <div className="input">          
+                    <input 
+                        type="email" 
+                        className='logon' 
+                        placeholder="E-mail"
+                        value={email}
+                        onChange={ e => setEmail(e.target.value) }
+                        required
+                        minLength='8'
+                        maxLength='30'
+                    />
+                    <div className="icon">
+							<FiMail className="icon" size={24} color="#014eb9"/>
+							</div>
+						</div>
+                    <div className="input">
+                    <input 
+                        placeholder="Usuário" 
+                        className='logon' 
+                        value={login}
+                        onChange={ e => setLogin(e.target.value) }
+                        required
+                        minLength='8'
+                        maxLength='30'
+                    />
+                    <div className="icon">
+							<FiUser className="icon" size={24} color="#014eb9"/>
+							</div>
+						</div>
+                    <div className="input ">
+                    <input
+                        type="password"
+                        className='logon' 
+                        placeholder="Senha" 
+                        value={password}
+                        onChange={ e => setPassword(e.target.value) }
+                        required
+                        minLength='8'
+                        maxLength='20'
+                    />
+                    <div className="icon">
+                        <FiLock className="icon" size={24} color="#014eb9"/>
+                        </div>
+                    </div>
+
+                <button className="login-button">
+                    Cadastrar<span></span>
+        		</button>
+                <Link to="/" className="back-link">
+						<FiArrowLeft size={16} color="#014eb9"/>Voltar para o login
+				</Link>
+                </form>
+				</section>
+                </div>
+        {/* <div className="register-container">
             <div className="content">
                 <section>
                     <img src={logoImg} alt="Be The Hero" className="logo"/> 
@@ -99,7 +175,7 @@ export default function Register() {
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>
-        </div>
+        </div> */}
         <Error message={message} validate={validate} />
         </>
     );

@@ -80,14 +80,14 @@ return(
 						<button className="login-button">
           		Entrar<span></span>
         		</button>
-					</form>
-					<Link to="/register" className="back-link">
+						<Link to="/register" className="back-link">
 						<FiLogIn size={16} color="#014eb9"/>Não tenho cadastro
 					</Link>
+					</form>
 				</section>
-				<div className="painel-logon">
+				{/* <div className="painel-logon">
 					<img src={wallpaperLogon} alt="painel" width={300}/>
-				</div>
+				</div> */}
 			<Error message={message} validate={validate} />
 		</div>
 	</>
