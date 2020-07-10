@@ -1,3 +1,15 @@
-h2 {
-    text-align: left;
+.editProfileScreen{
+	width: 320px;
+	height: 100vh;
+	padding-top: 10px;
+	/* background-color: turquoise; */
+
+}
+
+img.editProfile {
+	position: fixed;
+	width: 500px;
+	height: 500px;
+	bottom: 10%;
+	right: 5%;
 }

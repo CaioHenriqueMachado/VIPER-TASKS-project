@@ -45,7 +45,7 @@ return(
 		<div className="container center">
 				<section className="loginScreen">
 					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
-					<h1 className='logon'>Seja bem vindo</h1>
+					<h1>Seja bem vindo</h1>
 					<form onSubmit={handleLogon}>
 						<div className="input">
 							<input

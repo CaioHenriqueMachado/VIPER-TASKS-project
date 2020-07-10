@@ -104,7 +104,7 @@ export default function Profile() {
         <>
         <div className="profile-container">
             <header>
-                <img src={logoImg} alt="Be The Hero" />
+                <img src={logoImg}  />
     <span>Bem vindo, {userName}</span>
 
                 <Link className="button" to="/tasks/new">

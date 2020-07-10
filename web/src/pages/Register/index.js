@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiUser, FiLock, FiMail } from 'react-icons/fi';
 import api from '../../services/api';
 
-import './styles.css';
 import avatarImg from '../../assests/avatar.svg';
 import wallpaperOne from '../../assests/wallpaperImage2.svg';
 import wallpaperTwo from '../../assests/wallpaperImage1.svg';
@@ -45,7 +44,7 @@ export default function Register() {
 			<div className="container center">
 				<section className="loginScreen">
 					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
-					<h1 className='logon'>CADASTRE-SE</h1>
+					<h1>CADASTRE-SE</h1>
 					<form onSubmit={handleRegister}>
 						<div className="input">
 							<input 

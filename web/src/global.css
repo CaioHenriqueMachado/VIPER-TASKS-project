@@ -41,14 +41,34 @@ form {
   
 }
 
-form input {
+/* form input {
   width: 100%;
   height: 60px;
   color: rgb(43, 42, 42);
   border: 1px solid #dcdce6;
-  /* border-radius: 8px; */
+  border-radius: 8px;
   padding: 0 24px;
   margin: 5px 0;
+} */
+
+form input {
+  width: 320px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  font-size: 16pt;
+  background-color: rgba(150, 1, 1, 0);
+  margin-bottom: 10px;
+  border-bottom: 3px solid #014eb9;
+}
+
+h1 {
+  margin: 20px 0;
+  text-transform: uppercase;
+}
+
+form h2 {
+  margin: 10px 0;
 }
 
 form textarea {
