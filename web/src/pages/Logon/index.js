@@ -4,7 +4,7 @@ import { FiLogIn, FiUser, FiLock } from 'react-icons/fi';
 import api from '../../services/api';
 
 import './styles.css';
-import avatarImg from '../../assests/avatar.svg';
+import logoImg from '../../assests/logoWhite.png';
 import wallpaperOne from '../../assests/wallpaperImage2.svg';
 import wallpaperTwo from '../../assests/wallpaperImage1.svg';
 
@@ -44,7 +44,7 @@ return(
 	<>
 		<div className="container center">
 				<section className="loginScreen">
-					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
+					<img src={logoImg} className="Logo" alt="Logo" width="250px"/>
 					<h1>Seja bem vindo</h1>
 					<form onSubmit={handleLogon}>
 						<div className="input">

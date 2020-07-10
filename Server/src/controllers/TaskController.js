@@ -7,7 +7,7 @@ module.exports = {
         const user_id = request.headers.authorization;
 
         const tasks = await connection('tasks')
-            .where('user_id',user_id)
+            .where({'user_id': user_id, 'concluded': false})
             .select('*');
 
         return response.json(tasks);
@@ -41,9 +41,6 @@ module.exports = {
 		const user_id = request.headers.authorization;
 		const updated_at = GetDate();
 
-		if (name.length < 4 || difficulty.length < 4){
-			return response.status(401).json({error: 'Operation not permitted.'}); //Não autorizado
-		}
 
 		const task = await connection('tasks')
 		.where('id', id)

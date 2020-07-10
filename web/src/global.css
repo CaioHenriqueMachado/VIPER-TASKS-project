@@ -54,7 +54,7 @@ form input {
 
 h1 {
   margin: 20px 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 form h2 {

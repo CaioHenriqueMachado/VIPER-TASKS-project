@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiTrash2, FiPower, FiEdit, FiX } from 'react-icons/fi';
+import { FiTrash2, FiPower, FiEdit, FiX, FiCheckSquare } from 'react-icons/fi';
 
 import './styles.css';
 import initialModal from './script';
@@ -75,6 +75,26 @@ export default function Profile() {
         history.push('/') ;
     }
 
+    async function handleConcludeTask(taskId){
+
+    const data = {
+        concluded: true
+    };
+
+
+    try {
+        await api.put(`tasks/${taskId}`,data, {
+            headers: {
+                Authorization: userId,
+            }
+            });
+            setTasks(tasks.filter(task => task.id !== taskId));
+    }catch{
+
+    }
+
+    }
+
     async function handleUpdateTask(e){
 		e.preventDefault();
 
@@ -139,6 +159,10 @@ export default function Profile() {
                       <button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
                           <FiTrash2 size={20} color="#a8a8b3" />
                       </button>
+
+                      <button className="check" onClick={() => handleConcludeTask(task.id)} type="button">
+                          <FiCheckSquare size={21} color="#a8a8b3" />
+                      </button>
                   </li>
                 ))}
             </ul>
@@ -155,7 +179,7 @@ export default function Profile() {
 						value={name}
                         onChange={ e => setName(e.target.value) }
                         maxLength='100'
-
+                        required
 					/>
 					<h2>Descrição:</h2>
 					<textarea 

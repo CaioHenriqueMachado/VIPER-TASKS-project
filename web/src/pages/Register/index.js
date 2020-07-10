@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiUser, FiLock, FiMail } from 'react-icons/fi';
 import api from '../../services/api';
 
-import avatarImg from '../../assests/avatar.svg';
+import logoImg from '../../assests/logoWhite.png';
 import wallpaperOne from '../../assests/wallpaperImage2.svg';
 import wallpaperTwo from '../../assests/wallpaperImage1.svg';
 
@@ -43,8 +43,8 @@ export default function Register() {
 		<>
 			<div className="container center">
 				<section className="loginScreen">
-					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
-					<h1>CADASTRE-SE</h1>
+					<img src={logoImg} className="avatar-logon" alt="" width="250px"/>
+					<h1>Faça seu cadastro</h1>
 					<form onSubmit={handleRegister}>
 						<div className="input">
 							<input 
@@ -121,3 +121,5 @@ export default function Register() {
 		</>
 	);
 	}
+
+	// COR PRETO CLARO 1E1E1E LARANJA F34605
