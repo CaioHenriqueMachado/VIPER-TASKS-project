@@ -4,10 +4,11 @@ const GetDate = require('../controllers/GetDateController');
 module.exports = {
 	// Para listar tasks do usuario
 	async index(request, response) {
+				const { concluded = 0 } = request.query;
         const user_id = request.headers.authorization;
 
         const tasks = await connection('tasks')
-            .where({'user_id': user_id, 'concluded': false})
+            .where({'user_id': user_id, 'concluded': concluded})
             .select('*');
 
         return response.json(tasks);
