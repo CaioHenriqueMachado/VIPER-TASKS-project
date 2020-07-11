@@ -7,6 +7,7 @@ import initialModal from './script';
 import finishModal from './script2';
 
 import Error from '../../Error';
+import DateFormat from '../../DateFormat';
 
 import logoImg from '../../assests/logo1.svg';
 
@@ -160,7 +161,14 @@ export default function Profile() {
 
                       <strong>DIFICULDADE:</strong>
                       <p>{task.difficulty}</p>
-                    
+                      
+                      <strong>DATA DE ATUALIZAÇÃO:</strong>
+                      <p>{DateFormat(task.updated_at)}</p>
+                
+                      <strong>DATA DE CADASTRO:</strong>
+                      <p>{DateFormat(task.created_at)}</p>
+
+
                       { (task.concluded === 0)  && (
                       <button className="edit" onClick={() => (handleIdTask(task.id), initialModal('modal-edit'))} type="button">
                           <FiEdit size={20} color="#a8a8b3" />
