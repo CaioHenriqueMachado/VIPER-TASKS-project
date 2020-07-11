@@ -161,21 +161,20 @@ export default function Profile() {
                       <strong>DIFICULDADE:</strong>
                       <p>{task.difficulty}</p>
                     
-                      <button className="edit" onClick={() => (handleIdTask(task.id), initialModal('modal-edit'))} type="button">
                       { (task.concluded === 0)  && (
+                      <button className="edit" onClick={() => (handleIdTask(task.id), initialModal('modal-edit'))} type="button">
                           <FiEdit size={20} color="#a8a8b3" />
-                          )}
                       </button>
+                      )}
 
                       <button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
-                      
                           <FiTrash2 size={20} color="#a8a8b3" />
                       </button>
                     
                     
                       <button className="check" onClick={() => handleConcludeTask(task.id, task.concluded)} type="button">
                             { (task.concluded === 0)  && (
-                            <FiCheckSquare size={21} color="#a8a8b3" />
+                            <FiCheckSquare size={21} color="#a8a8b3" />)}
                             { (task.concluded === 1)  && (
                             <FiXSquare size={21} color="#a8a8b3" />)}
                       </button>
