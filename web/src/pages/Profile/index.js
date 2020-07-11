@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiTrash2, FiPower, FiEdit, FiX, FiCheckSquare, FiXSquare } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+import { FiTrash2, FiEdit, FiX, FiCheckSquare, FiXSquare } from 'react-icons/fi';
 
 import './styles.css';
 
@@ -10,6 +10,7 @@ import initialModal from './script';
 import finishModal from './script2';
 
 import Error from '../../Error';
+import Header from '../../Header';
 import DateFormat from '../../DateFormat';
 
 import logoImg from '../../assests/logo1.svg';
@@ -81,11 +82,6 @@ export default function Profile() {
         setDifficulty('')
     }
 
-    function handleLogout() {
-        localStorage.clear();
-        history.push('/') ;
-    }
-
     async function handleConcludeTask(taskId, taskConcluded){
  
     const data = {
@@ -130,24 +126,11 @@ export default function Profile() {
 		}			
 }
 
-
     return (
         <>
-        <div className="profile-container">
-            <header>
-                <img src={logoImg}  alt='logos'/>
-    <span>Bem vindo, {userName}</span>
-
-                <Link className="button" to="/tasks/new">
-                    Cadastrar um novo caso
-                </Link>
-                <Link className="button editProfile" to="/profile/edit">
-                    <FiEdit size={30} color="#dcdce6" />
-                </Link>
-                <button className="button" type="button" onClick={handleLogout}>
-                    <FiPower size={30} color="#dcdce6" />
-                </button>
-            </header>
+        <div className="profile-container container pd-top">
+            <Header />
+            <span>Bem vindo, {userName}</span>
 
             <h1>Sua lista de tarefas</h1>
             <h2>
