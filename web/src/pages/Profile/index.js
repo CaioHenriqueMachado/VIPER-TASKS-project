@@ -3,7 +3,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiTrash2, FiPower, FiEdit, FiX, FiCheckSquare, FiXSquare } from 'react-icons/fi';
 
 import './styles.css';
+
+
 import initialModal from './script';
+
 import finishModal from './script2';
 
 import Error from '../../Error';
@@ -23,6 +26,7 @@ export default function Profile() {
     const [validate, setValidate] = useState(false);
     const [message, setMessage] = useState('');
     const [concludedTasks, setconcludedTasks] = useState(0);
+    const [totalTask, setTotalTask] = useState(tasks.length);
 
     const history = useHistory();
     const userId = localStorage.getItem('userId');
@@ -34,9 +38,13 @@ export default function Profile() {
                 Authorization: userId,
             }
         }).then(response => {
+            setTotalTask(response.data.length);
             setTasks(response.data);
         })
+
+        
     }, [chave, userId, concludedTasks]);
+
 
     async function handleDeleteTask(id) {
         try {
@@ -46,6 +54,7 @@ export default function Profile() {
                 }
             });
             setTasks(tasks.filter(task => task.id !== id));
+            setTotalTask(totalTask - 1);
         }catch(err) {   
             setMessage('Erro ao deletar Tarefa !!!');
             setValidate(true);
@@ -141,7 +150,12 @@ export default function Profile() {
             </header>
 
             <h1>Sua lista de tarefas</h1>
-            
+            <h2>
+                {totalTask} 
+                { (concludedTasks === 0)  && (<strong> Tarefas pendentes </strong>)}
+                { (concludedTasks === 1)  && (<strong> Tarefas concluídas </strong>)}
+            </h2>
+
             <button 
                 onClick={ () => setconcludedTasks(0) }
                 >TAREFAS PENDENTES
@@ -161,7 +175,7 @@ export default function Profile() {
 
                       <strong>DIFICULDADE:</strong>
                       <p>{task.difficulty}</p>
-                      
+
                       <strong>DATA DE ATUALIZAÇÃO:</strong>
                       <p>{DateFormat(task.updated_at)}</p>
                 
@@ -180,7 +194,7 @@ export default function Profile() {
                       </button>
                     
                     
-                      <button className="check" onClick={() => handleConcludeTask(task.id, task.concluded)} type="button">
+                      <button className="check" onClick={() => (handleConcludeTask(task.id, task.concluded), setTotalTask(totalTask - 1))} type="button">
                             { (task.concluded === 0)  && (
                             <FiCheckSquare size={21} color="#a8a8b3" />)}
                             { (task.concluded === 1)  && (
