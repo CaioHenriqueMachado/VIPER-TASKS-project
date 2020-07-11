@@ -21,20 +21,21 @@ export default function Profile() {
     const [difficulty, setDifficulty] = useState('');
     const [validate, setValidate] = useState(false);
     const [message, setMessage] = useState('');
+    const [concludedTasks, setconcludedTasks] = useState(0);
 
     const history = useHistory();
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('userName');
 
     useEffect(() => {
-        api.get('tasks',{
+        api.get(`tasks?concluded=${concludedTasks}`,{
             headers: {
                 Authorization: userId,
             }
         }).then(response => {
             setTasks(response.data);
         })
-    }, [chave, userId]);
+    }, [chave, userId, concludedTasks]);
 
     async function handleDeleteTask(id) {
         try {
@@ -116,9 +117,9 @@ export default function Profile() {
             setMessage('Sua tarefa não cumpre o tamanho mínimo');
             setValidate(true);
             setValidate(false);
-		}
-				
+		}			
 }
+
 
     return (
         <>
@@ -139,7 +140,15 @@ export default function Profile() {
             </header>
 
             <h1>Sua lista de tarefas</h1>
-
+            
+            <button 
+                onClick={ () => setconcludedTasks(0) }
+                >TAREFAS PENDENTES
+            </button>
+            <button 
+                onClick={ () => setconcludedTasks(1) }
+                >TAREFAS CONCLUÍDAS
+            </button>
             <ul>
                 {tasks.map(task =>(
                       <li key={task.id}>
