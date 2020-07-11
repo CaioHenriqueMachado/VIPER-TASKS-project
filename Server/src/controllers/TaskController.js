@@ -9,7 +9,8 @@ module.exports = {
 
         const tasks = await connection('tasks')
             .where({'user_id': user_id, 'concluded': concluded})
-            .select('*');
+						.select('*')
+						.orderBy('updated_at', 'desc');
 
         return response.json(tasks);
 	},

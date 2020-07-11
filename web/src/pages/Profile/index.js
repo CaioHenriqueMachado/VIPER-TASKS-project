@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiTrash2, FiPower, FiEdit, FiX, FiCheckSquare } from 'react-icons/fi';
+import { FiTrash2, FiPower, FiEdit, FiX, FiCheckSquare, FiXSquare } from 'react-icons/fi';
 
 import './styles.css';
 import initialModal from './script';
@@ -76,10 +76,10 @@ export default function Profile() {
         history.push('/') ;
     }
 
-    async function handleConcludeTask(taskId){
-
+    async function handleConcludeTask(taskId, taskConcluded){
+ 
     const data = {
-        concluded: true
+        concluded:  taskConcluded === 1 ? false: true
     };
 
 
@@ -162,16 +162,24 @@ export default function Profile() {
                       <p>{task.difficulty}</p>
                     
                       <button className="edit" onClick={() => (handleIdTask(task.id), initialModal('modal-edit'))} type="button">
+                      { (task.concluded === 0)  && (
                           <FiEdit size={20} color="#a8a8b3" />
+                          )}
                       </button>
 
                       <button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
+                      
                           <FiTrash2 size={20} color="#a8a8b3" />
                       </button>
-
-                      <button className="check" onClick={() => handleConcludeTask(task.id)} type="button">
-                          <FiCheckSquare size={21} color="#a8a8b3" />
+                    
+                    
+                      <button className="check" onClick={() => handleConcludeTask(task.id, task.concluded)} type="button">
+                            { (task.concluded === 0)  && (
+                            <FiCheckSquare size={21} color="#a8a8b3" />
+                            { (task.concluded === 1)  && (
+                            <FiXSquare size={21} color="#a8a8b3" />)}
                       </button>
+
                   </li>
                 ))}
             </ul>
