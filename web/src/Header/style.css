@@ -7,6 +7,8 @@ header.new {
   padding: 0 5%;
   background-color: #1E1E1E;
   justify-content: space-between;
+  display: flex;
+  z-index: 100;
 }
 
 header.new  div.img {
@@ -55,10 +57,13 @@ header.new div.menu ul.new li a {
 
 header.new div.menu ul.new li a:hover {
   color: whitesmoke;
+  transition: 1s;
 }
 header.new div.menu ul.new li a:hover a.icon-header{
   color: whitesmoke;
+  transition: 1s;
 }
 header.new div.menu ul.new li:hover {
   border-bottom: 3px solid #F34605;
+  transition: .5s;
 }

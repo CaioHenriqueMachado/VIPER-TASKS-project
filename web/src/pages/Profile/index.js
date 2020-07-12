@@ -18,209 +18,215 @@ import logoImg from '../../assests/logo1.svg';
 import api from '../../services/api';
 
 export default function Profile() {
-    const [chave, setChave ] = useState(0);
-    const [ tasks, setTasks ] = useState([]);
-    const [ task, setTask ] = useState('');
-    const [name, setName] = useState('');
-	const [description, setDescription] = useState('');
-    const [difficulty, setDifficulty] = useState('');
-    const [validate, setValidate] = useState(false);
-    const [message, setMessage] = useState('');
-    const [concludedTasks, setconcludedTasks] = useState(0);
-    const [totalTask, setTotalTask] = useState(tasks.length);
+	const [chave, setChave ] = useState(0);
+	const [ tasks, setTasks ] = useState([]);
+	const [ task, setTask ] = useState('');
+	const [name, setName] = useState('');
+const [description, setDescription] = useState('');
+	const [difficulty, setDifficulty] = useState('');
+	const [validate, setValidate] = useState(false);
+	const [message, setMessage] = useState('');
+	const [concludedTasks, setconcludedTasks] = useState(0);
+	const [totalTask, setTotalTask] = useState(tasks.length);
 
-    const history = useHistory();
-    const userId = localStorage.getItem('userId');
-    const userName = localStorage.getItem('userName');
+	const history = useHistory();
+	const userId = localStorage.getItem('userId');
+	const userName = localStorage.getItem('userName');
 
-    useEffect(() => {
-        api.get(`tasks?concluded=${concludedTasks}`,{
-            headers: {
-                Authorization: userId,
-            }
-        }).then(response => {
-            setTotalTask(response.data.length);
-            setTasks(response.data);
-        })
+	useEffect(() => {
+			api.get(`tasks?concluded=${concludedTasks}`,{
+					headers: {
+							Authorization: userId,
+					}
+			}).then(response => {
+					setTotalTask(response.data.length);
+					setTasks(response.data);
+			})
 
-        
-    }, [chave, userId, concludedTasks]);
-
-
-    async function handleDeleteTask(id) {
-        try {
-            await api.delete(`tasks/${id}`, {
-                headers: {
-                    Authorization: userId,
-                }
-            });
-            setTasks(tasks.filter(task => task.id !== id));
-            setTotalTask(totalTask - 1);
-        }catch(err) {   
-            setMessage('Erro ao deletar Tarefa !!!');
-            setValidate(true);
-            setValidate(false);
-        }
-    }
-
-    async function handleIdTask(id) {
-        setTask(id);
-        api.get(`task/${id}`,{
-            headers: {
-                Authorization: userId,
-            }
-        }).then(response => {
-			setName(response.data.name)
-			setDescription(response.data.description)
-			setDifficulty(response.data.difficulty)
-        })
-    }
-
-    async function closeIdTask(){
-        setName('')
-        setDescription('')
-        setDifficulty('')
-    }
-
-    async function handleConcludeTask(taskId, taskConcluded){
- 
-    const data = {
-        concluded:  taskConcluded === 1 ? false: true
-    };
+			
+	}, [chave, userId, concludedTasks]);
 
 
-    try {
-        await api.put(`tasks/${taskId}`,data, {
-            headers: {
-                Authorization: userId,
-            }
-            });
-            setTasks(tasks.filter(task => task.id !== taskId));
-    }catch{
+	async function handleDeleteTask(id) {
+			try {
+					await api.delete(`tasks/${id}`, {
+							headers: {
+									Authorization: userId,
+							}
+					});
+					setTasks(tasks.filter(task => task.id !== id));
+					setTotalTask(totalTask - 1);
+			}catch(err) {   
+					setMessage('Erro ao deletar Tarefa !!!');
+					setValidate(true);
+					setValidate(false);
+			}
+	}
 
-    }
+	async function handleIdTask(id) {
+			setTask(id);
+			api.get(`task/${id}`,{
+					headers: {
+							Authorization: userId,
+					}
+			}).then(response => {
+		setName(response.data.name)
+		setDescription(response.data.description)
+		setDifficulty(response.data.difficulty)
+			})
+	}
 
-    }
+	async function closeIdTask(){
+			setName('')
+			setDescription('')
+			setDifficulty('')
+	}
 
-    async function handleUpdateTask(e){
-		e.preventDefault();
+	async function handleConcludeTask(taskId, taskConcluded){
 
-		const data = {
-			name,
-			description,
-			difficulty
-		};
+	const data = {
+			concluded:  taskConcluded === 1 ? false: true
+	};
 
-		try {
-            await api.put(`tasks/${task}`,data, {
-                headers: {
-                    Authorization: userId,
-                }
-                });
-                setChave(chave+ 1);
-                
-		} catch(err){
-            setMessage('Sua tarefa não cumpre o tamanho mínimo');
-            setValidate(true);
-            setValidate(false);
-		}			
+
+	try {
+			await api.put(`tasks/${taskId}`,data, {
+					headers: {
+							Authorization: userId,
+					}
+					});
+					setTasks(tasks.filter(task => task.id !== taskId));
+	}catch{
+
+	}
+
+	}
+
+	async function handleUpdateTask(e){
+	e.preventDefault();
+
+	const data = {
+		name,
+		description,
+		difficulty
+	};
+
+	try {
+					await api.put(`tasks/${task}`,data, {
+							headers: {
+									Authorization: userId,
+							}
+							});
+							setChave(chave+ 1);
+							
+	} catch(err){
+					setMessage('Sua tarefa não cumpre o tamanho mínimo');
+					setValidate(true);
+					setValidate(false);
+	}			
 }
 
-    return (
-        <>
-        <div className="profile-container container pd-top">
-            <Header />
-            <span>Bem vindo, {userName}</span>
+	return (
+		<>
+			<div className="profile-container container pd-top">
+				<Header />
+				<h2>Bem vindo, {userName}</h2>
+				<h1>LISTA DE TAREFAS</h1>
+				<h2 className='orange'>
+					{totalTask} 
+					{ (concludedTasks === 0)  && (<strong> Tarefas pendentes </strong>)}
+					{ (concludedTasks === 1)  && (<strong> Tarefas concluídas </strong>)}
+				</h2>
 
-            <h1>Sua lista de tarefas</h1>
-            <h2>
-                {totalTask} 
-                { (concludedTasks === 0)  && (<strong> Tarefas pendentes </strong>)}
-                { (concludedTasks === 1)  && (<strong> Tarefas concluídas </strong>)}
-            </h2>
+				<div className='doubleButton'>
+					<button  className='one'
+						onClick={ () => setconcludedTasks(0) }
+						>PENDENTES
+					</button>
+					<button className='two'
+						onClick={ () => setconcludedTasks(1) }
+						>CONCLUÍDAS
+					</button>
+				</div>
 
-            <button 
-                onClick={ () => setconcludedTasks(0) }
-                >TAREFAS PENDENTES
-            </button>
-            <button 
-                onClick={ () => setconcludedTasks(1) }
-                >TAREFAS CONCLUÍDAS
-            </button>
-            <ul>
-                {tasks.map(task =>(
-                      <li key={task.id}>
-                      <strong>TAREFA:</strong>
-                      <p>{task.name}</p>
+				<hr size={5} color='black'/>
 
-                      <strong>DESCRIÇÃO:</strong>
-                        <p>{task.description}</p>
+				<div className='main'>
+					<ul>
+							{tasks.map(task =>(
+										<li key={task.id}>
+										<strong>TAREFA:</strong>
+										<p>{task.name}</p>
 
-                      <strong>DIFICULDADE:</strong>
-                      <p>{task.difficulty}</p>
+										<strong>DESCRIÇÃO:</strong>
+											<p>{task.description}</p>
 
-                      <strong>DATA DE ATUALIZAÇÃO:</strong>
-                      <p>{DateFormat(task.updated_at)}</p>
-                
-                      <strong>DATA DE CADASTRO:</strong>
-                      <p>{DateFormat(task.created_at)}</p>
+										<strong>DIFICULDADE:</strong>
+										<p>{task.difficulty}</p>
+
+										<strong>DATA DE ATUALIZAÇÃO:</strong>
+										<p>{DateFormat(task.updated_at)}</p>
+							
+										<strong>DATA DE CADASTRO:</strong>
+										<p>{DateFormat(task.created_at)}</p>
 
 
-                      { (task.concluded === 0)  && (
-                      <button className="edit" onClick={() => (handleIdTask(task.id), initialModal('modal-edit'))} type="button">
-                          <FiEdit size={20} color="#a8a8b3" />
-                      </button>
-                      )}
+										{ (task.concluded === 0)  && (
+										<button className="edit" onClick={() => (handleIdTask(task.id), initialModal('modal-edit'))} type="button">
+												<FiEdit size={20} />
+										</button>
+										)}
 
-                      <button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
-                          <FiTrash2 size={20} color="#a8a8b3" />
-                      </button>
-                    
-                    
-                      <button className="check" onClick={() => (handleConcludeTask(task.id, task.concluded), setTotalTask(totalTask - 1))} type="button">
-                            { (task.concluded === 0)  && (
-                            <FiCheckSquare size={21} color="#a8a8b3" />)}
-                            { (task.concluded === 1)  && (
-                            <FiXSquare size={21} color="#a8a8b3" />)}
-                      </button>
+										<button className="delete" onClick={() => handleDeleteTask(task.id)} type="button">
+												<FiTrash2 size={20} />
+										</button>
+									
+									
+										<button className="check" onClick={() => (handleConcludeTask(task.id, task.concluded), setTotalTask(totalTask - 1))} type="button">
+													{ (task.concluded === 0)  && (
+													<FiCheckSquare size={21} />)}
+													{ (task.concluded === 1)  && (
+													<FiXSquare size={21} color="#a8a8b3" />)}
+										</button>
 
-                  </li>
-                ))}
-            </ul>
-        </div>
-
-        <div id="modal-edit" className="modal-container">
-			<div className="modal">
-				<button className="close" onClick={() => (finishModal('modal-edit'), closeIdTask())}>
-					<FiX size={40} color="black"/>
-				</button>
-				<form onSubmit={handleUpdateTask}>
-					<h2>Nome:</h2>
-					<input 
-						value={name}
-                        onChange={ e => setName(e.target.value) }
-                        maxLength='100'
-                        required
-					/>
-					<h2>Descrição:</h2>
-					<textarea 
-						value={description}
-                        onChange={ e => setDescription(e.target.value) }
-                        maxLength='250'
-        
-					/>
-					<h2>Dificuldade:</h2>
-					<input 
-						value={difficulty}
-                        onChange={ e => setDifficulty(e.target.value) }
-                        maxLength='20'
-					/>
-					<button className="button" type="submit" onClick={() => finishModal('modal-edit')}>Atualizar</button>
-				</form>
+								</li>
+							))}
+					</ul>
+					</div>
 			</div>
+
+			<div id="modal-edit" className="modal-container">
+		<div className="modal">
+			<button className="close" onClick={() => (finishModal('modal-edit'), closeIdTask())}>
+				<FiX size={40} color="black"/>
+			</button>
+			<form onSubmit={handleUpdateTask}>
+				<h2>Nome:</h2>
+				<input 
+					value={name}
+											onChange={ e => setName(e.target.value) }
+											maxLength='100'
+											required
+				/>
+				<h2>Descrição:</h2>
+				<textarea 
+					value={description}
+											onChange={ e => setDescription(e.target.value) }
+											maxLength='250'
+			
+				/>
+				<h2>Dificuldade:</h2>
+				<input 
+					value={difficulty}
+											onChange={ e => setDifficulty(e.target.value) }
+											maxLength='20'
+				/>
+				<button className="button" type="submit" onClick={() => finishModal('modal-edit')}>Atualizar</button>
+			</form>
 		</div>
-        <Error message={message} validate={validate} />
-        </>
-        
-    );
+	</div>
+			<Error message={message} validate={validate} />
+			</>
+			
+	);
 } 

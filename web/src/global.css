@@ -61,8 +61,22 @@ form input {
 }
 
 h1 {
+  font-size: 28px;
   margin: 20px 0;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 10px 0;
+	font-weight: bold;
+  text-transform: uppercase;
+  
+}
+
+.orange {
+  color: #F34605;
 }
 
 form h2 {
