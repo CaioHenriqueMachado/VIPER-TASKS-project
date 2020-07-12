@@ -186,7 +186,7 @@ const [description, setDescription] = useState('');
 													{ (task.concluded === 0)  && (
 													<FiCheckSquare size={21} />)}
 													{ (task.concluded === 1)  && (
-													<FiXSquare size={21} color="#a8a8b3" />)}
+													<FiXSquare size={21} color="#fff700" />)}
 										</button>
 
 								</li>
