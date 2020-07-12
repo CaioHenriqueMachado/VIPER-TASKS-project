@@ -6,6 +6,7 @@ import './styles.css';
 
 
 import initialModal from './script';
+import alterColor from './scriptColor';
 
 import Error from '../../Error';
 import Header from '../../Header';
@@ -101,12 +102,8 @@ const [description, setDescription] = useState('');
 					}
 					});
 					setTasks(tasks.filter(task => task.id !== taskId));
-	}catch{
-
+	}catch{}
 	}
-
-	}
-
 	async function handleUpdateTask(e){
 	e.preventDefault();
 
@@ -138,27 +135,20 @@ const [description, setDescription] = useState('');
 				<h2>Bem vindo, {userName}</h2>
 				<h1>LISTA DE TAREFAS</h1>
 				
-					
-					{ (concludedTasks === 0)  && (
-					<h2 className='red'>{totalTask} 
-						<strong> Tarefas pendentes </strong>
-					</h2>)
-					}
-
-					{ (concludedTasks === 1)  && (
-					<h2 className='green'>{totalTask} 
-						<strong> Tarefas concluídas </strong>
-					</h2>)
-					}	
+				<h2 id='totalColor' className='red'>{totalTask} 
+					{ (concludedTasks === 0)  && (<strong> Tarefas pendentes </strong>)}
+					{ (concludedTasks === 1)  && (<strong> Tarefas concluídas </strong>)}
+				</h2>
+				
 				
 
 				<div className='doubleButton'>
-					<button  className='one'
-						onClick={ () => setconcludedTasks(0) }
+					<button  className='one orange-bg'  id='buttonOne'
+						onClick={ () => (setconcludedTasks(0), alterColor(0) ) }
 						>PENDENTES
 					</button>
-					<button className='two'
-						onClick={ () => setconcludedTasks(1) }
+					<button className='two gray-bg'  id='buttonTwo'
+						onClick={ () => (setconcludedTasks(1), alterColor(1)) }
 						>CONCLUÍDAS
 					</button>
 				</div>
@@ -168,7 +158,7 @@ const [description, setDescription] = useState('');
 				<div className='main'>
 					<ul>
 							{tasks.map(task =>(
-										<li key={task.id}>
+										<li key={task.id} id='liColor'>
 										<strong>TAREFA:</strong>
 										<p>{task.name}</p>
 

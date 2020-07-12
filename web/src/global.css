@@ -87,6 +87,24 @@ h2 {
   color: #F34605;
 }
 
+.orange-bg {
+  background-color: #F34605;
+}
+
+.gray-bg {
+  background-color: #d1d1d1;
+}
+
+.red-bg {
+  background-color: rgba(255, 0, 0, .8);
+}
+
+.green-bg {
+  background-color: rgba(0, 255, 0, .8);
+}
+
+
+
 .red {
   color: red;
 }
