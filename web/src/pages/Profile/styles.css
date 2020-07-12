@@ -6,11 +6,9 @@ div.doubleButton {
 div.doubleButton button {
 	height: 40px;
 	border: none;
-	background-color: teal;
 	padding: 0 15px;
 	border: 3px solid black;
 	font-weight: bold;
-	
 }
 
 div.doubleButton button.one {
@@ -44,7 +42,7 @@ div.doubleButton button.two {
 	min-width: 300px;
 	border-radius: 10px;
 	padding: 20px;
-	background-color: rgba(255, 0, 0, .5);
+	background-color: rgba(255, 0, 0, .8);
 	margin: 20px;
 	position: relative;
 }
@@ -56,9 +54,7 @@ div.doubleButton button.two {
 
 }
 
-
-
-button.check, button.edit, button.delete {
+button.check, button.edit, button.delete, button.detail {
 	background-color: transparent;
 	position: absolute;
 	right: 10px;
@@ -73,6 +69,9 @@ button.check, button.edit, button.delete {
 
 .container ul li button.edit{
 	right: 70px;
+}
+.container ul li button.detail{
+	right: 100px;
 }
 
 
@@ -107,9 +106,6 @@ button.delete:hover {
 
 
 
-
-
-
 /* ---------------------MODAL-------------------------------- */
 .modal-container {
 	width: 100vw;
@@ -125,14 +121,29 @@ button.delete:hover {
 }
 
 .modal {
-	background: white;
-	width: 60%;
-	min-width: 300px;
-	padding: 60px;
+	background: whitesmoke;
+	width: 90%;
+	max-width: 500px;
+	padding: 20px;
 	border-radius: 20px;
-	border: 10px solid black;
-	box-shadow: 0 0 0 2px white;
+	border: 2px solid black;
+	/* box-shadow: 0 0 0 2px white; */
 	position: relative;
+}
+
+
+div.doubleButtonAlert {
+	margin-top: 20px;
+	width: 100%;
+	height: 55px;
+	text-align: center;
+}
+
+div.doubleButtonAlert button {
+	margin: 0;
+	margin-left: 10px;
+	height: 100%;
+	width: 150px;
 }
 
 @keyframes modal {
@@ -147,10 +158,9 @@ button.delete:hover {
 
 .modal-container.mostrar .modal {
 	animation: modal .3s;
-
 }
 
-button.close {
+/* button.close {
 	width: 50px;
 	height: 50px;
 	border-radius: 50px;
@@ -160,7 +170,7 @@ button.close {
 	top: -25px;
 	right: -25px;
 	cursor: pointer;
-}
+} */
 
 .modal-container.mostrar {
 	display: flex;

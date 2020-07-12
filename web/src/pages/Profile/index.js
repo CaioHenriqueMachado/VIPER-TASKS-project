@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FiTrash2, FiEdit, FiX, FiCheckSquare, FiXSquare } from 'react-icons/fi';
+import { FiTrash2, FiEdit, FiX, FiCheckSquare, FiXSquare, FiSearch } from 'react-icons/fi';
 
 import './styles.css';
 
 
 import initialModal from './script';
-
-import finishModal from './script2';
 
 import Error from '../../Error';
 import Header from '../../Header';
@@ -28,6 +26,7 @@ const [description, setDescription] = useState('');
 	const [message, setMessage] = useState('');
 	const [concludedTasks, setconcludedTasks] = useState(0);
 	const [totalTask, setTotalTask] = useState(tasks.length);
+	const [active, setActive] = useState(false);
 
 	const history = useHistory();
 	const userId = localStorage.getItem('userId');
@@ -76,6 +75,12 @@ const [description, setDescription] = useState('');
 			})
 	}
 
+	async function activeModal(id, type) {
+		if (type == 'detail'){
+			setActive(true);
+		}
+		
+	}
 	async function closeIdTask(){
 			setName('')
 			setDescription('')
@@ -158,7 +163,7 @@ const [description, setDescription] = useState('');
 										<strong>TAREFA:</strong>
 										<p>{task.name}</p>
 
-										<strong>DESCRIÇÃO:</strong>
+										{/* <strong>DESCRIÇÃO:</strong>
 											<p>{task.description}</p>
 
 										<strong>DIFICULDADE:</strong>
@@ -168,7 +173,7 @@ const [description, setDescription] = useState('');
 										<p>{DateFormat(task.updated_at)}</p>
 							
 										<strong>DATA DE CADASTRO:</strong>
-										<p>{DateFormat(task.created_at)}</p>
+										<p>{DateFormat(task.created_at)}</p> */}
 
 
 										{ (task.concluded === 0)  && (
@@ -188,45 +193,49 @@ const [description, setDescription] = useState('');
 													{ (task.concluded === 1)  && (
 													<FiXSquare size={21} color="#fff700" />)}
 										</button>
-
 								</li>
 							))}
 					</ul>
 					</div>
 			</div>
-
-			<div id="modal-edit" className="modal-container">
-		<div className="modal">
-			<button className="close" onClick={() => (finishModal('modal-edit'), closeIdTask())}>
-				<FiX size={40} color="black"/>
-			</button>
-			<form onSubmit={handleUpdateTask}>
+		<div id="modal-edit" className="modal-container">
+		<div className="modal">	
+			 <form onSubmit={handleUpdateTask}>
 				<h2>Nome:</h2>
 				<input 
 					value={name}
-											onChange={ e => setName(e.target.value) }
-											maxLength='100'
-											required
+					onChange={ e => setName(e.target.value) }
+					maxLength='100'
+					required
 				/>
 				<h2>Descrição:</h2>
 				<textarea 
 					value={description}
-											onChange={ e => setDescription(e.target.value) }
-											maxLength='250'
+					onChange={ e => setDescription(e.target.value) }
+					maxLength='250'
 			
 				/>
 				<h2>Dificuldade:</h2>
 				<input 
 					value={difficulty}
-											onChange={ e => setDifficulty(e.target.value) }
-											maxLength='20'
+					onChange={ e => setDifficulty(e.target.value) }
+					maxLength='20'
 				/>
-				<button className="button" type="submit" onClick={() => finishModal('modal-edit')}>Atualizar</button>
-			</form>
+				<div className='doubleButtonAlert'>
+					<button className=" button close" onClick={() => (initialModal('modal-edit'), closeIdTask())}>
+						CANCELAR
+					</button>
+					<button className="button" type="submit" onClick={() => initialModal('modal-edit')}>
+						ATUALIZAR
+					</button>
+					
+				</div>
+			</form> 
 		</div>
 	</div>
-			<Error message={message} validate={validate} />
-			</>
+	
+	<Error message={message} validate={validate} />
+	</>
 			
 	);
 } 

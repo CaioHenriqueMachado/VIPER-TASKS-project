@@ -44,20 +44,28 @@ button {
 section {
   text-align: center; 
 }
-form {
-  max-width: 350px;
-  
-}
 
 form input {
-  width: 320px;
+  width: 100%;
   height: 40px;
   padding: 10px;
   border: none;
   font-size: 16pt;
   background-color: rgba(150, 1, 1, 0);
   margin-bottom: 10px;
-  border-bottom: 3px solid #014eb9;
+  border-bottom: 3px solid black;
+}
+
+form textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  font-size: 16pt;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid black;
+  background-color: rgba(150, 1, 1, 0);
 }
 
 h1 {
@@ -83,21 +91,10 @@ form h2 {
   margin: 10px 0;
 }
 
-form textarea {
-  width: 100%;
-  resize: vertical;
-  min-height: 140px;
-  color: #333;
-  border: 1px solid #dcdce6;
-  border-radius: 8px;
-  padding: 16px 24px;
-  line-height: 24px;
-}
-
 .button {
   width: 100%;
   height: 60px;
-  background: #0609be;
+  background: black;
   border: 0;
   border-radius: 4px;
   color: whitesmoke;
