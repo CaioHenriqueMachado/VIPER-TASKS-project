@@ -51,7 +51,6 @@ div.doubleButton button.two {
 	.container div.main ul li{
 		width: 100%;
 	}
-
 }
 
 button.check, button.edit, button.delete, button.detail {
@@ -60,7 +59,7 @@ button.check, button.edit, button.delete, button.detail {
 	right: 10px;
 	top: 10px;
 	border: 0;
-	color: #a8a8b3;
+	color: black;
 }
 
 .container ul li button.delete {
@@ -93,13 +92,13 @@ button.delete:hover {
 .container ul li strong {
 	display: block;
 	margin-bottom: 8px;
-	color: #41414d;
+	color: black;
 	margin-top: 16px;
+	font-size: 16px;
 }
 
 .container ul li p{
-
-	color: #737380;
+	color: black;
 	line-height: 21px;
 	font-size: 16px;
 }

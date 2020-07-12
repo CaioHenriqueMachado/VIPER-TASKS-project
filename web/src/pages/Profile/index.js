@@ -133,15 +133,24 @@ const [description, setDescription] = useState('');
 
 	return (
 		<>
-			<div className="profile-container container pd-top">
+			<div className="container pd-top">
 				<Header />
 				<h2>Bem vindo, {userName}</h2>
 				<h1>LISTA DE TAREFAS</h1>
-				<h2 className='orange'>
-					{totalTask} 
-					{ (concludedTasks === 0)  && (<strong> Tarefas pendentes </strong>)}
-					{ (concludedTasks === 1)  && (<strong> Tarefas concluídas </strong>)}
-				</h2>
+				
+					
+					{ (concludedTasks === 0)  && (
+					<h2 className='red'>{totalTask} 
+						<strong> Tarefas pendentes </strong>
+					</h2>)
+					}
+
+					{ (concludedTasks === 1)  && (
+					<h2 className='green'>{totalTask} 
+						<strong> Tarefas concluídas </strong>
+					</h2>)
+					}	
+				
 
 				<div className='doubleButton'>
 					<button  className='one'
