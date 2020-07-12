@@ -143,7 +143,7 @@ const [description, setDescription] = useState('');
 				
 
 				<div className='doubleButton'>
-					<button  className='one orange-bg'  id='buttonOne'
+					<button  className='one red-bg'  id='buttonOne'
 						onClick={ () => (setconcludedTasks(0), alterColor(0) ) }
 						>PENDENTES
 					</button>
@@ -190,7 +190,7 @@ const [description, setDescription] = useState('');
 													{ (task.concluded === 0)  && (
 													<FiCheckSquare size={21} />)}
 													{ (task.concluded === 1)  && (
-													<FiXSquare size={21} color="#fff700" />)}
+													<FiCheckSquare size={21} color="#00ff00" />)}
 										</button>
 								</li>
 							))}
