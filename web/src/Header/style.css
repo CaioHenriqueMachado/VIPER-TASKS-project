@@ -1,6 +1,5 @@
 header.new {
   width: 100vw;
-  height: 60px;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,6 +8,13 @@ header.new {
   justify-content: space-between;
   display: flex;
   z-index: 100;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 670px) {
+  header.new {
+    justify-content: center;
+  }
 }
 
 header.new  div.img {
