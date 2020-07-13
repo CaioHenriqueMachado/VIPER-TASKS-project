@@ -3,11 +3,12 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 
 import './styles.css';
-import avatarImg from '../../assests/avatar.svg';
+
 import editProfileImg from '../../assests/editProfileImg.svg';
 
 import api from '../../services/api';
 
+import Header from '../../Header';
 import Error from '../../Error';
 
 export default function EditSession() {
@@ -45,12 +46,13 @@ export default function EditSession() {
 		}
 	}
 	
+
+
 	return(
 		<>
-			<div className="container">
-				<section className="editProfileScreen">
-					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
-					<h1 >Atualize seus dados</h1>
+			<div className="container newTask">
+				<Header />
+				<section className='lateralForm'>
 					<form onSubmit={handleSessionEdit}>
 						<h2>Senha antiga:</h2>
 						<input 
@@ -85,11 +87,13 @@ export default function EditSession() {
 							<FiSettings size={16} color="#0609be"/>
 							Voltar para suas configurações
 						</Link>
-					</form>
+						</form>
 				</section>
-				<img src={editProfileImg} className='editProfile'  alt="Edit Profile"/>
-				<Error message={message} validate={validate} />
+				<div className='imageWallpaper'>
+					<img src={editProfileImg} alt="Edit profile Image"/>
+				</div>
 			</div>
+			<Error message={message} validate={validate} />
 		</>
-	)
+	);
 }
