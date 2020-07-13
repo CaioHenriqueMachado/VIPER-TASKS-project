@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
-import logoImg from '../../assests/logo1.svg';
+import newTaskImg from '../../assests/newTask.svg';
 
 import api from '../../services/api';
 
@@ -45,57 +45,51 @@ export default function NewTask() {
 		}
 				
 }
-    return (
-		<>
-			<div className="container pd-top">
-				<Header />
+return (
+
+	<>
+		<div className="container newTask">
+			<Header />
+			<section className='lateralForm'>
+				<h1>NOVA TAREFA</h1>
+				<form onSubmit={handleNewTask}>
+					<input placeholder="Título da tarefa"
+						value={name}
+						onChange={ e => setName(e.target.value) }
+						required
+						minLength='4'
+						maxLength='100'
+					/>
+
+					<textarea placeholder="Descrição"
+						value={description}
+						onChange={ e => setDescription(e.target.value) }
+						required
+						minLength='10'
+						maxLength='250'
+					/>
+
+					<input 
+						type='select'
+						placeholder="Nível de dificuldade" 
+						value={difficulty}
+						onChange={ e => setDifficulty(e.target.value) }
+						required
+						minLength='4'
+						maxLength='20'
+					/>
+					<button className="button" type="submit">Cadastrar</button>
+					<Link className="back-link" to="/profile">
+						<FiArrowLeft size={16} color="#E02041"/>
+						Voltar para Home
+					</Link>
+				</form>
+			</section>
+			<div className='imageWallpaper'>
+				<img src={newTaskImg} alt="New Task Image"/>
 			</div>
-        {/* <div className="new-incident-container">
-        <div className="content">
-            <section>
-                <img src={logoImg} alt="Be The Hero" className="logo"/>
-
-                <h1>Cadastrar nova tarefa</h1>
-                <p>Descreva a tarefa detalhadamente para que possa resolve-la depois.</p>
-                
-                <Link className="back-link" to="/profile">
-                <FiArrowLeft size={16} color="#E02041"/>
-                Voltar para Home
-                </Link>
-
-            </section>
-            <form onSubmit={handleNewTask}>
-								<input placeholder="Título da tarefa"
-									value={name}
-									onChange={ e => setName(e.target.value) }
-									required
-									minLength='4'
-									maxLength='100'
-                />
-
-                <textarea placeholder="Descrição"
-									value={description}
-									onChange={ e => setDescription(e.target.value) }
-									required
-									minLength='10'
-									maxLength='250'
-                />
-
-                <input placeholder="Nível de dificuldade" 
-									value={difficulty}
-									onChange={ e => setDifficulty(e.target.value) }
-									required
-									minLength='4'
-									maxLength='20'
-                />
-                    
-           
-
-                <button className="button" type="submit">Cadastrar</button>
-            </form>
-        </div>
-    </div> */}
-	<Error message={message} validate={validate} />
+		</div>
+		<Error message={message} validate={validate} />
 	</>
-    );
+);
 }
