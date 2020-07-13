@@ -85,7 +85,7 @@ return (
 				</form>
 			</section>
 			<div className='imageWallpaper'>
-				<img src={newTaskImg} alt="New Task Image"/>
+				<img src={newTaskImg} alt="New Task"/>
 			</div>
 		</div>
 		<Error message={message} validate={validate} />

@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn, FiKey } from 'react-icons/fi';
 import api from '../../services/api';
 
-import './styles.css';
 import editProfileImg from '../../assests/editProfileImg.svg';
 import Header from '../../Header';
 import Error from '../../Error';
@@ -58,109 +57,54 @@ export default function EditProfile() {
 
 	return(
 		<>
-<div className="container newTask">
-			<Header />
-			<section className='lateralForm'>
-				<form onSubmit={handleProfileEdit}>
-				<h2>Nome:</h2>
- 							<input 
-								placeholder="Nome"
-								value={name}
-								onChange={ e => setName(e.target.value) }
-								required
-								minLength='4'
-								maxLength='15'
-							/> 
-							<h2>E-mail:</h2>            
-							<input 
-								type="email" 
-								placeholder="E-mail"
-								value={email}
-								onChange={ e => setEmail(e.target.value) }
-								required
-								minLength='8'
-								maxLength='30'
-							/>
-							<h2>Usuário:</h2>
-							<input 
-								placeholder="Usuário" 
-								value={login}
-								onChange={ e => setLogin(e.target.value) }
-								required
-								minLength='8'
-								maxLength='30'
-							/>
-					<Link to="/pwd" className="back-link">
-						<FiKey size={16} color="#0609be"/>
-						Alterar senha
-					</Link>
-					<button className="button" type="submit">Atualizar</button>
-					<Link to="/profile" className="back-link">
-						<FiLogIn size={16} color="#0609be"/>
-						Voltar para tarefas
-					</Link>
-				</form>
-			</section>
-			<div className='imageWallpaper'>
-				<img src={editProfileImg} alt="New Task Image"/>
+			<div className="container newTask">
+				<Header />
+				<section className='lateralForm'>
+					<form onSubmit={handleProfileEdit}>
+					<h2>Nome:</h2>
+								<input 
+									placeholder="Nome"
+									value={name}
+									onChange={ e => setName(e.target.value) }
+									required
+									minLength='4'
+									maxLength='15'
+								/> 
+								<h2>E-mail:</h2>            
+								<input 
+									type="email" 
+									placeholder="E-mail"
+									value={email}
+									onChange={ e => setEmail(e.target.value) }
+									required
+									minLength='8'
+									maxLength='30'
+								/>
+								<h2>Usuário:</h2>
+								<input 
+									placeholder="Usuário" 
+									value={login}
+									onChange={ e => setLogin(e.target.value) }
+									required
+									minLength='8'
+									maxLength='30'
+								/>
+						<Link to="/pwd" className="back-link">
+							<FiKey size={16} color="#0609be"/>
+							Alterar senha
+						</Link>
+						<button className="button" type="submit">Atualizar</button>
+						<Link to="/profile" className="back-link">
+							<FiLogIn size={16} color="#0609be"/>
+							Voltar para tarefas
+						</Link>
+					</form>
+				</section>
+				<div className='imageWallpaper'>
+					<img src={editProfileImg} alt="Edit profile Image"/>
+				</div>
 			</div>
-		</div>
-		<Error message={message} validate={validate} />
-	</>
-);
+			<Error message={message} validate={validate} />
+		</>
+	);
 }
-
-
-
-
-// 			<div className="container pd-top">
-// 			<Header />
-// 				<section className="editProfileScreen">
-// 					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
-// 					<h1 >Atualize seu cadastro</h1>
-// 					<form onSubmit={handleProfileEdit}>
-// 							<h2>Nome:</h2>
-// 							<input 
-// 								placeholder="Nome"
-// 								value={name}
-// 								onChange={ e => setName(e.target.value) }
-// 								required
-// 								minLength='4'
-// 								maxLength='15'
-// 							/> 
-// 							<h2>E-mail:</h2>            
-// 							<input 
-// 								type="email" 
-// 								placeholder="E-mail"
-// 								value={email}
-// 								onChange={ e => setEmail(e.target.value) }
-// 								required
-// 								minLength='8'
-// 								maxLength='30'
-// 							/>
-// 							<h2>Usuário:</h2>
-// 							<input 
-// 								placeholder="Usuário" 
-// 								value={login}
-// 								onChange={ e => setLogin(e.target.value) }
-// 								required
-// 								minLength='8'
-// 								maxLength='30'
-// 							/>
-// 					<Link to="/pwd" className="back-link">
-// 						<FiKey size={16} color="#0609be"/>
-// 						Alterar senha
-// 					</Link>
-// 					<button className="button" type="submit">Atualizar</button>
-// 					<Link to="/profile" className="back-link">
-// 						<FiLogIn size={16} color="#0609be"/>
-// 						Voltar para tarefas
-// 					</Link>
-// 					</form>
-// 				</section>
-// 				<img src={editProfileImg} className='editProfile'  alt="Edit Profile"/>
-// 				<Error message={message} validate={validate} />
-// 			</div>
-// 		</>
-// 	)
-// }
