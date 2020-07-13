@@ -7,6 +7,7 @@ import logoImg from '../../assests/logo1.svg';
 
 import api from '../../services/api';
 
+import Header from '../../Header';
 import Error from '../../Error';
 
 export default function NewTask() {
@@ -46,7 +47,10 @@ export default function NewTask() {
 }
     return (
 		<>
-        <div className="new-incident-container">
+			<div className="container pd-top">
+				<Header />
+			</div>
+        {/* <div className="new-incident-container">
         <div className="content">
             <section>
                 <img src={logoImg} alt="Be The Hero" className="logo"/>
@@ -90,7 +94,7 @@ export default function NewTask() {
                 <button className="button" type="submit">Cadastrar</button>
             </form>
         </div>
-    </div>
+    </div> */}
 	<Error message={message} validate={validate} />
 	</>
     );

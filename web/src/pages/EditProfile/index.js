@@ -6,16 +6,16 @@ import api from '../../services/api';
 import './styles.css';
 import avatarImg from '../../assests/avatar.svg';
 import editProfileImg from '../../assests/editProfileImg.svg';
-
+import Header from '../../Header';
 import Error from '../../Error';
 
 export default function EditProfile() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [login, setLogin] = useState('');
-    const [validate, setValidate] = useState(false);
+	const [validate, setValidate] = useState(false);
 
-    const message = 'Seu cadastro não cumpre as validacões';
+	const message = 'Seu cadastro não cumpre as validacões';
 	const history = useHistory();
 
 	const userId = localStorage.getItem('userId');
@@ -59,7 +59,8 @@ export default function EditProfile() {
 
 	return(
 		<>
-			<div className="container">
+			<div className="container pd-top">
+			<Header />
 				<section className="editProfileScreen">
 					<img src={avatarImg} className="avatar-logon" alt="" width="100px"/>
 					<h1 >Atualize seu cadastro</h1>

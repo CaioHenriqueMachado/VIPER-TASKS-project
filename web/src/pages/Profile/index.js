@@ -128,8 +128,6 @@ export default function Profile() {
 					{ (concludedTasks === 0)  && (<strong> Tarefas pendentes </strong>)}
 					{ (concludedTasks === 1)  && (<strong> Tarefas concluídas </strong>)}
 				</h2>
-				
-				
 
 				<div className='doubleButton'>
 					<button  className='one red-bg'  id='buttonOne'
@@ -221,9 +219,7 @@ export default function Profile() {
 			</form> 
 		</div>
 	</div>
-	
 	<Error message={message} validate={validate} />
 	</>
-			
 	);
 } 
