@@ -68,7 +68,6 @@ return (
 						minLength='10'
 						maxLength='250'
 					/>
-
 					<input 
 						type='select'
 						placeholder="Nível de dificuldade" 
