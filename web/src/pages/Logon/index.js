@@ -85,8 +85,8 @@ return(
 					</form>
 				</section>
 				<div className="painel-logon">
-					<img src={wallpaperOne} className='left' alt="painel"/>
-					<img src={wallpaperTwo} className='right' alt="painel"/>
+					<img src={wallpaperOne} className='left off850px' alt="painel"/>
+					<img src={wallpaperTwo} className='right off850px' alt="painel"/>
 				</div>
 			<Error message={message} validate={validate} />
 		</div>

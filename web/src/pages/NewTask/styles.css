@@ -31,6 +31,9 @@ div.imageWallpaper img {
 		display: none;
   }
   
+  img.off850px{
+    display: none;
+  }
   div.newTask {
     justify-content: center;
   }

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 
-import './styles.css';
-
 import editProfileImg from '../../assests/editProfileImg.svg';
 
 import api from '../../services/api';
@@ -90,7 +88,7 @@ export default function EditSession() {
 						</form>
 				</section>
 				<div className='imageWallpaper'>
-					<img src={editProfileImg} alt="Edit profile Image"/>
+					<img src={editProfileImg} alt="Edit profile Image" className='off850px'/>
 				</div>
 			</div>
 			<Error message={message} validate={validate} />
