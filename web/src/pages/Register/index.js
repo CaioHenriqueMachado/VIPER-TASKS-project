@@ -121,5 +121,3 @@ export default function Register() {
 		</>
 	);
 	}
-
-	// COR PRETO CLARO 1E1E1E LARANJA F34605
