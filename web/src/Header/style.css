@@ -39,7 +39,6 @@ header.new div.menu ul.new {
   justify-content: center;
   list-style: none;
   align-items: center;
-  
 }
 
 header.new div.menu ul.new li {
@@ -69,6 +68,7 @@ header.new div.menu ul.new li a:hover a.icon-header{
   color: whitesmoke;
   transition: 1s;
 }
+
 header.new div.menu ul.new li:hover {
   border-bottom: 3px solid #F34605;
   transition: .5s;

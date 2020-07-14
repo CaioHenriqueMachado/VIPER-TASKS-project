@@ -101,7 +101,7 @@ export default function EditProfile() {
 					</form>
 				</section>
 				<div className='imageWallpaper'>
-					<img src={editProfileImg} alt="Edit profile Image"/>
+					<img src={editProfileImg} alt="WallpaperEditProfile"/>
 				</div>
 			</div>
 			<Error message={message} validate={validate} />

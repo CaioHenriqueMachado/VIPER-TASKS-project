@@ -88,7 +88,7 @@ export default function EditSession() {
 						</form>
 				</section>
 				<div className='imageWallpaper'>
-					<img src={editProfileImg} alt="Edit profile Image" className='off850px'/>
+					<img src={editProfileImg} alt="Wallpaper edit session" className='off850px'/>
 				</div>
 			</div>
 			<Error message={message} validate={validate} />
