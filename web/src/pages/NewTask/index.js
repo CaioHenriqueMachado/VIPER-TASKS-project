@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
-import newTaskImg from '../../assests/newTask.svg';
+import newTaskImg from '../../assets/newTask.svg';
 
 import api from '../../services/api';
 

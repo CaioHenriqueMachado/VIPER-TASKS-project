@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn, FiKey } from 'react-icons/fi';
 import api from '../../services/api';
 
-import editProfileImg from '../../assests/editProfileImg.svg';
+import editProfileImg from '../../assets/editProfileImg.svg';
 import Header from '../../Header';
 import Error from '../../Error';
 

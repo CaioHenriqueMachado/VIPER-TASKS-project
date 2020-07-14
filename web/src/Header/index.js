@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FaPowerOff, FaPlus, FaCog } from 'react-icons/fa';
 import './style.css';
-import logo from '../assests/logoBlack.png';
+import logo from '../assets/logoBlack.png';
 
 export default function Header() {
 

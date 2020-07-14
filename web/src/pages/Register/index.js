@@ -3,9 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiUser, FiLock, FiMail } from 'react-icons/fi';
 import api from '../../services/api';
 
-import logoImg from '../../assests/logoWhite.png';
-import wallpaperOne from '../../assests/wallpaperImage2.svg';
-import wallpaperTwo from '../../assests/wallpaperImage1.svg';
+import logoImg from '../../assets/logoWhite.png';
+import wallpaperOne from '../../assets/wallpaperImage2.svg';
+import wallpaperTwo from '../../assets/wallpaperImage1.svg';
 
 import Error from '../../Error';
 

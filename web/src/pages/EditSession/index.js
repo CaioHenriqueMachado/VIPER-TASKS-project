@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 
-import editProfileImg from '../../assests/editProfileImg.svg';
+import editProfileImg from '../../assets/editProfileImg.svg';
 
 import api from '../../services/api';
 
