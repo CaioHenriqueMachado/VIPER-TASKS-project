@@ -15,7 +15,7 @@ Viper Tasks
 </p>
 
 <div>
-  <img src="./web/src/assets/demo.gif" alt="demo-web" height="425" width="660">
+  <img src="./web/src/assets/demo.gif" alt="demo-web" height="425" width="100%">
 </div>
 
 <hr />
