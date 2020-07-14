@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
-  <img src="./frontend/src/assets/logo.svg" alt="ViperTasks" width="120">
+  <img src="./web/src/assets/logoWhite.png" alt="ViperTasks" width="120">
 <br>
 <br>
 Viper Tasks
@@ -15,7 +15,7 @@ Viper Tasks
 </p>
 
 <div>
-  <img src="./frontend/src/assets/demo_web.gif" alt="demo-web" height="425" width="660">
+  <img src="./web/src/assets/demo.gif" alt="demo-web" height="425" width="660">
 </div>
 
 <hr />
