@@ -20,18 +20,20 @@ Viper Tasks
 
 <hr />
 
-## Features
+<br>
+  <h2 align="center">FEATURES :book:</h2>
+<br>
 
 This app features all the latest tools and practices in mobile development!
 
 - ⚛️ **React Js** 	- A JavaScript library for building user interfaces
 - 💹 **Node Js** 	- A web framework for Node Js
 - 📄 **SQlite** 		- A cross-platform and open-source Structured Query Language.
-- 📄 **Knex Js** 		- Dependency for using the database.
+- 📊 **Knex Js** 		- Dependency for using the database.
 - ☯️ **Insomnia** 	- HTTP request software and with open source.
 - 🔄 **Nodemon** 	- Reload server automatically.
-- 🔄 **Cors** 	- Dependency so you don't have access to external links.
-- 🔄 **Axios** 	- Promise based HTTP client.
+- ⚠️ **Cors** 	- Dependency so you don't have access to external links.
+- 🔀 **Axios** 	- Promise based HTTP client.
 
 ## Getting started
 
