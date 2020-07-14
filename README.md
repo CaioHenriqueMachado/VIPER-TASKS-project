@@ -1,47 +1,55 @@
-# CRUD-method
-Aqui terá um CRUD básico e solido usando Node.js e react
-// DEPENDENCIAS
-// CORS: (Segurança) Para dizer quem vai poder acessar seu sistema.
-// EXPRESS: microframework, serve para trazer as configurações básicas sobre rotas
-// NODEMON: Para subir serve sozinho ao salvar (Está em homologação somente)
-// KNEX JS: Para traduzir liguagem do banco em JS
-// SQLITE3: Banco a ser usado.
-// MIGRATIONS(Se cria usando knex) 
-Criando migrate [npx knex migrate:make migration_name ]
-Rodando migrate [npx knex migrate:latest]
-// EXECUTAR (npx knex init) para EXECUTAR UM PACOTE É (npx), knex para criar um arquivo do bancco. 
-'d6347e16'
-*******PACOTES
-crypto para deixar aleatório.
+<h1 align="center">
+<br>
+  <img src="./frontend/src/assets/logo.svg" alt="ViperTasks" width="120">
+<br>
+<br>
+Viper Tasks
+</h1>
 
+<p align="center">Responsive web application for task management</p>
 
-/**
- * METODOS HTTP:
- * GET: Buscar/Listar uma informação do back-end
- * POST: Criar uma informação no back-end
- * PUT: Altera uma informação no back-end
- * DELETE: Deleta uma informação no back-end 
- */
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT">
+  </a>
+</p>
 
- /**
-  * TIPOS DE PARÂMETROS:
-  * Query Params: Parâmetros nomeados enviados na rota após o simbolo de "?". Serve para filtros, paginação, etc.
-  * Route Params: Parâmetros utilizados para identificar recursos.
-  * Request Body: Corpo da requisição, utilizado para criar ou alterar recusos.
-  */
+<div>
+  <img src="./frontend/src/assets/demo_web.gif" alt="demo-web" height="425" width="660">
+</div>
 
-// REQUEST: Guarda todos os dados que vem da requisição do usuario.
-// RESPONSE: Responsavel por retornar uma respota para o usuário.
+<hr />
 
-// Query Builder: Escrever linhas de bancos na estrutura do node.
+## Features
 
-Para instalar dependencias é só dar um NPM INSTALL
+This app features all the latest tools and practices in mobile development!
 
-Criando projetos:
-[npx create-react-app web]
-Executar:
-[npm start]
-DEPENDENCIAS React
-[npm install react-icons]
-[npm install react-router-dom] - Responsavel pelas rotas no react
-[npm install axios] - Client http (Vai ser responsavel por requisição e resposta no back end)
+- ⚛️ **React Js** 	- A JavaScript library for building user interfaces
+- 💹 **Node Js** 	- A web framework for Node Js
+- 📄 **SQlite** 		- A cross-platform and open-source Structured Query Language.
+- 📄 **Knex Js** 		- Dependency for using the database.
+- ☯️ **Insomnia** 	- HTTP request software and with open source.
+- 🔄 **Nodemon** 	- Reload server automatically.
+- 🔄 **Cors** 	- Dependency so you don't have access to external links.
+- 🔄 **Axios** 	- Promise based HTTP client.
+
+## Getting started
+
+1. Clone this repo using `git clone https://github.com/CaioHenriqueMachado/VIPER-TAKS-project.git`
+2. Move yourself to the appropriate directory: `cd BeTheHero`<br />
+
+3. Run `npm` to install dependencies<br />
+
+### Getting started with the backend server
+
+1. Move yourself to the backend folder: `cd server`
+2. Run `npm start` to start the server
+
+### Getting started with the frontend app
+
+1. Move yourself to the frontend folder: `cd web`
+2. Run `npm start` to start the web application
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/licenses/MIT) page for details.
