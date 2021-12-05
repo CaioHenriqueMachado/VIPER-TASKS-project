@@ -34,6 +34,7 @@ This app features all the latest tools and practices in mobile development!
 - 🔄 **Nodemon** 	- Reload server automatically.
 - ⚠️ **Cors** 	- Dependency so you don't have access to external links.
 - 🔀 **Axios** 	- Promise based HTTP client.
+- 🔀 **Images** 	- Images from https://undraw.co/
 
 ## Getting started
 
